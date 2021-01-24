@@ -4,4 +4,7 @@
 
 step1 :
 
-``` npx http-server ```
+``` 
+npx http-server 
+
+```
