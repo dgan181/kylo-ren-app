@@ -259,32 +259,74 @@ textarea {
   }
   h2,
   h3 {
+    text-align: center;
     page-break-after: avoid;
   }
 }
-
-.control-panel {
-
+.input-param{
+  width: 540px;
+  border: 1px solid #ddd;
+  box-shadow: 1px 1px 3px 1px #eee;
+  padding: 20px 10px;
+  margin:10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
-.control-panel {
-    width: 530px;
-    border: 1px solid #ddd;
-    box-shadow: 1px 1px 3px 1px #eee;
-    padding: 10px 0px;
-    margin:10px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+
+.center-param{
+  width: 540px;
+  margin:10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.custom-input, .custom-input-2{
+  position: relative;
+  display: inline-block;
+  font-size: 17px;
+}
+
+.custom-input-2 input {
+  border: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  background: #f2f2f2;
+  padding: 12px;
+  border-radius: 3px;
+  width: 100px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.custom-input input {
+  border: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  background: #f2f2f2;
+  padding: 12px;
+  border-radius: 3px;
+  width: 300px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  font-size: 16px;
+
 }
 user agent stylesheet
 div {
     display: block;
 }
 html {
-    color: #222;
-    font-size: 1em;
-    line-height: 1.4;
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4;
 }
 html {
     line-height: 1.15;
@@ -294,4 +336,68 @@ html {
     background: #b3d4fc;
     text-shadow: none;
 }
+
+*{
+  box-sizing: border-box;
+}
+
+.custom-selector {
+  position: relative;
+  display: inline-block;
+  font-size: 17px;
+}
+
+.custom-selector select {
+  width: 300px;
+  min-height: 35px;
+  background: #f2f2f2;
+  border-radius: 3px;
+  border: 2px;
+  outline: none;
+  padding: 12px;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  appearance: none;
+}
+
+.custom-selector::after {
+  content: '';
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent;
+  border-top-color: #222;
+  display: inline-block;
+  position: absolute;
+  right: 18px;
+  bottom: 22px;
+  border-radius: 2px;
+
+}
+
+button {
+  appearance: none;
+  ms-appearance: none;
+  moz-appearance: none;
+  border: none;
+  background: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.btn {
+  width: 250px;
+  margin: 15px 0;
+  padding: 14px 25px;
+  background: #D3D3D3;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  line-height: 100%;
+  border-radius: 3px;
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
+
+.btn:hover {
+  opacity: 1;
 }

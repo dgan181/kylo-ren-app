@@ -16,35 +16,109 @@
   <link rel="stylesheet" href="css/main.css">
   <script src="https://cdn.jsdelivr.net/npm/tone@14.7.39/build/Tone.min.js"></script>
   <script src ='https://cdn.jsdelivr.net/npm/nexusui@latest/dist/NexusUI.js'> </script>
+  <script src ='https://cdn.jsdelivr.net/npm/nexusui@latest/dist/NexusUI.min.js'> </script>
   <meta name="theme-color" content="#fafafa">
+
+  <script type="text/javascript">
+    function isNumberKey(txt, evt) {
+      var charCode = (evt.which) ? evt.which : evt.keyCode;
+      if (charCode == 46) {
+        //Check if the text already contains the . character
+        if (txt.value.indexOf('.') === -1) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        if (charCode > 31 &&
+          (charCode < 48 || charCode > 57))
+          return false;
+      }
+      return true;
+    }
+  </script>
 
 </head>
 
 <body>
+
   <style>
   .control-panel {
     border : 1px solid #ddd;
     box-shadow : 1px 1px 1px 1px ##eee;
   }
+
+  form {
+    width: 300px;
+
+  }
+  h2 {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+
+  }
+  *, *::after, *::before {
+    box-sizing: border-box;
+  }
+
+  .content {
+    max-width: 500px;
+    margin: auto;
+  }
+
+
   </style>
   <!--[if IE]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
 
   <!-- Add your site or application content here -->
-<div class="control-panel">
+  <div class="content">
+    <h2> Input Parameters</h2>
+    <div class="input-param">
+      <form>
+        <label class="custom-input">
+          Temperature
+          <input id="temp" type="text" onkeypress="return isNumberKey(this, event);" placeholder=" Value less than 1 is desriable"/>
+        </label>
+        <label class="custom-input-2">
+          Time Signature <br>
+          <input id="time-sig-num" type="number" min="1" value="4"> <span> &#47;</span> <input id="time-sig-num" type="number" min="1" name="value" value="4">
+        </label>
+        <label class="custom-input">
+          Number of Bars
+          <input id="numOfBars" type="number" min="8" max="40" value="16"/>
+        </label>
+        <label class="custom-selector">
+          Valence
+          <select id="valence">
+            <option value="m2">-2</option>
+            <option value="m1">-1</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2" selected>2</option>
+          </select>
+        </label>
+
+      </form>
+    </div>
+    <div class="center-param">
+    <button id="generate" class="btn"> Generate </button>
+    <button id="play" class="btn"> Play </button>
+  </div>
+<!--<div class="control-panel">
+
   <button id="start">
-      Start
+    Start
   </button>
 
   <label>
     BPM <input id = "bpm" type="range" min = "30" max="150" value="120">
   </label>
+
 </div>
-
-  <div id = 'sequencer'>
-
-  </div>
+<div id = 'sequencer'></div> -->
 
 <!--  <button id="bass">-->
 <!--    Bass-->
