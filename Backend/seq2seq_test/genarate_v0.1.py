@@ -1,5 +1,3 @@
-#  -----------------------------------------------
-
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import os
@@ -14,39 +12,43 @@ Created on Fri Jul 24 16:55:40 2020
 import sys
 import ast
 import pickle
-
-
 from tensorflow.keras import models
-from Backend.seq2seq_test.aux_files.gen_aux import create_static_conditions,chords_mel_mid, chords_inf_model_ev, \
+from aux_files.gen_aux import create_static_conditions,chords_mel_mid, chords_inf_model_ev, \
     generate_chord_durs_ev_seq
-# ''' Input parameters
-# '''
 
-temp = float(sys.argv[1])
-timsig_n = sys.argv[2]
-timsig_d = sys.argv[3]
-time = "[" + str(timsig_n) + ", " + str(timsig_d) + "]"
-num_bars = int(sys.argv[4])
-val = str(sys.argv[5])
-print("We're in the generate script and have succesfully input the parameters")
+''' Input parameters
+'''
+
+arg1 = float(sys.argv[1])
+# arg2 = sys.argv[2].strip('[]').split(',')
+# arg2 = map(float, sys.argv[2].strip('[]').split(','))
+arg2 = str(ast.literal_eval(sys.argv[2]))
+arg3 = int(sys.argv[3])
+arg4 = str(sys.argv[4])
+
+print('hello again')
+print(arg1,arg2,arg3,arg4)
+print(type(arg1), type(arg2), type(arg3), type(arg4))
 
 '''Change these parameters to adjust the Generation'''
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 '''Set Global and Music Parameters'''
-
-#Default Global Parameters
 # temperature = 0.9#for sampling, below 1.0 makes safier predictions
 # timesig = str([4,4]) #4/4 3/4 etc
 # numOfBars = 16 #number of desired bars #8-40
 # valence = '2' #desired valence for chord arrangement from -2 to +2
+# print(temperature, timesig, numOfBars, valence)
+# print(type(temperature), type(timesig), type(numOfBars), type(valence))
 
 
-temperature = temp#for sampling, below 1.0 makes safier predictions
-timesig = time #4/4 3/4 etc
-numOfBars = num_bars #number of desired bars #8-40
-valence = val #desired valence for chord arrangement from -2 to +2
+# if (arg1==temperature and arg2==timesig and arg3==numOfBars and arg4==valence):
+#     print("we're good to run the script")
 
-#If you need to check you inputs
+
+temperature = arg1#for sampling, below 1.0 makes safier predictions
+timesig = arg2 #4/4 3/4 etc
+numOfBars = arg3 #number of desired bars #8-40
+valence = arg4 #desired valence for chord arrangement from -2 to +2
 # print(temperature, timesig, numOfBars, valence)
 # print(type(temperature), type(timesig), type(numOfBars), type(valence))
 
@@ -63,7 +65,7 @@ valence = val #desired valence for chord arrangement from -2 to +2
 
 '''Restore the models and load pickles for onehotencoders'''
 
-encoders_trans = './Backend/seq2seq_test/aux_files/chords_encoders_all.pickle'
+encoders_trans = './aux_files/chords_encoders_all.pickle'
 
 
 with open(encoders_trans, 'rb') as handle:
@@ -76,7 +78,7 @@ dec_vocab = len(TransEncoders[1].categories_[0])
 
 
 #load valence templates for both representations
-val_temp_path = './Backend/seq2seq_test/aux_files/Valence_Templates.pickle'
+val_temp_path = './aux_files/Valence_Templates.pickle'
 with open(val_temp_path, 'rb') as handle:
     val_templates = pickle.load(handle)
 
@@ -84,7 +86,7 @@ with open(val_temp_path, 'rb') as handle:
 
 '''Encoder Decoder with Inference Models'''
 LSTM_dim = 768
-model_seq = models.load_model('./Backend/seq2seq_test/aux_files/ChordDurMel_LSTM.h5')
+model_seq = models.load_model('./aux_files/ChordDurMel_LSTM.h5')
 encoder_seq, decoder_seq= chords_inf_model_ev(model_seq, LSTM_dim) #2.seq2seq lstm
 
 
@@ -109,5 +111,5 @@ while not stop_condition:
     except IndexError:
         print('Exception Raised. Generation aborted. Trying again')
 
-print("This generate script is done")
+
 
