@@ -21,20 +21,14 @@ app.post('/api', (request,response) => {
 
 //  Deal with the request
   const param = request.body;
-//  console.log(request.body);
 
-//  console.log(param.temp, param.timsig_n, param.timsig_d, param.numOfBars, param.valence)
-timeSig = param.timsig_n , param.timesig_d
-console.log()
-  // const python = spawn('python',['Backend/seq2seq_test/generate_v0.1.py', param.temp, param.timsig_n, param.timsig_d, param.numOfBars, param.valence]);
-//  const python = spawn('python',['script1.py', param.temp, param.timsig_n, param.timsig_d, param.numOfBars, param.valence]);
-  const python = spawn('python',['script1.py', param.temp, '[4,4]', '16', '2']);
+  const python = spawn('python',['script1.py', param.temp, param.timsig_n, param.timsig_d , param.numOfBars , param.valence ]);
 
   // Testing
    python.stdout.on('data', (data) => {
-//     console.log('from file...');
-//     filestuff = data.toString();
-//     console.log(filestuff);
+     console.log('from file...');
+     filestuff = data.toString();
+     console.log(filestuff);
      console.log(data.toString());
    });
 

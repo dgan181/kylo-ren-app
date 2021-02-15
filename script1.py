@@ -1,18 +1,3 @@
-# import sys
-# import subprocess
-#
-# print('Hello from the python file')
-# print('Python script successfully executed')
-#
-# # subprocess.run(['/full/path/to/venv/bin/python', 'path/to/script.py'])
-# f= open("gen.txt","w+")
-# f.write("The following content was retrived from the server: \r\n")
-# for i in sys.argv:
-#     f.write(str(i)+ "\n")
-# f.close()
-
-
-
 #  -----------------------------------------------
 
 #!/usr/bin/env python3
@@ -30,52 +15,38 @@ import sys
 import ast
 import pickle
 
-# Code to activate the Virtual Environment
-import os
-os.system("conda activate Music21")
-import subprocess
-from subprocess import check_output
-check_output("conda activate Music21", shell=True)
-print('some progress')
-
 
 from tensorflow.keras import models
 from Backend.seq2seq_test.aux_files.gen_aux import create_static_conditions,chords_mel_mid, chords_inf_model_ev, \
     generate_chord_durs_ev_seq
-print("I've activated the environment")
 # ''' Input parameters
 # '''
 
-arg1 = float(sys.argv[1])
-# arg2 = sys.argv[2].strip('[]').split(',')
-# arg2 = map(float, sys.argv[2].strip('[]').split(','))
-arg2 = str(ast.literal_eval(sys.argv[2]))
-arg3 = int(sys.argv[3])
-arg4 = str(sys.argv[4])
-
-print('hello again here are the arguments!')
-print(arg1,arg2,arg3,arg4)
-print(type(arg1), type(arg2), type(arg3), type(arg4))
+temp = float(sys.argv[1])
+timsig_n = sys.argv[2]
+timsig_d = sys.argv[3]
+time = "[" + str(timsig_n) + ", " + str(timsig_d) + "]"
+num_bars = int(sys.argv[4])
+val = str(sys.argv[5])
+print("We're in the generate script and have succesfully input the parameters")
 
 '''Change these parameters to adjust the Generation'''
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 '''Set Global and Music Parameters'''
+
+#Default Global Parameters
 # temperature = 0.9#for sampling, below 1.0 makes safier predictions
 # timesig = str([4,4]) #4/4 3/4 etc
 # numOfBars = 16 #number of desired bars #8-40
 # valence = '2' #desired valence for chord arrangement from -2 to +2
-# # print(temperature, timesig, numOfBars, valence)
-# # print(type(temperature), type(timesig), type(numOfBars), type(valence))
-# #
-#
-# if (arg1==temperature and arg2==timesig and arg3==numOfBars and arg4==valence):
-#     print("we're good to run the script")
 
 
-temperature = arg1#for sampling, below 1.0 makes safier predictions
-timesig = arg2 #4/4 3/4 etc
-numOfBars = arg3 #number of desired bars #8-40
-valence = arg4 #desired valence for chord arrangement from -2 to +2
+temperature = temp#for sampling, below 1.0 makes safier predictions
+timesig = time #4/4 3/4 etc
+numOfBars = num_bars #number of desired bars #8-40
+valence = val #desired valence for chord arrangement from -2 to +2
+
+#If you need to check you inputs
 # print(temperature, timesig, numOfBars, valence)
 # print(type(temperature), type(timesig), type(numOfBars), type(valence))
 
