@@ -18,13 +18,17 @@ app.use(express.json());
 app.post('/api', (request,response) => {
   var filestuff;
   console.log("I got a request!")
-//  console.log(request.body);
-  const param = request.body;
-//  console.log(param.temp, param.timsig_n, param.timsig_d, param.numOfBars, param.valence)
 
+//  Deal with the request
+  const param = request.body;
+//  console.log(request.body);
+
+//  console.log(param.temp, param.timsig_n, param.timsig_d, param.numOfBars, param.valence)
+timeSig = param.timsig_n , param.timesig_d
+console.log()
   // const python = spawn('python',['Backend/seq2seq_test/generate_v0.1.py', param.temp, param.timsig_n, param.timsig_d, param.numOfBars, param.valence]);
 //  const python = spawn('python',['script1.py', param.temp, param.timsig_n, param.timsig_d, param.numOfBars, param.valence]);
-  const python = spawn('python.exe',['script1.py', '0.6', '[4,4]', '16', '2']);
+  const python = spawn('python',['script1.py', param.temp, '[4,4]', '16', '2']);
 
   // Testing
    python.stdout.on('data', (data) => {
