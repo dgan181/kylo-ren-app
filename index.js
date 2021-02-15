@@ -4,6 +4,7 @@ const fs = require('fs');
 const {spawn} = require('child_process');
 const port = 3000;
 
+
 app.listen(port, (err) =>{
     if(!err)
     console.log('server started running on:' + port);
@@ -17,14 +18,23 @@ app.use(express.json());
 app.post('/api', (request,response) => {
   var filestuff;
   console.log("I got a request!")
-  console.log(request.body);
+//  console.log(request.body);
   const param = request.body;
-  const python = spawn('python',['script1.py', param.temp, param.timsig_n, param.timsig_d, param.numOfBars, param.valence]);
-  python.stdout.on('data', function (data) {
-    console.log('from file...');
-    filestuff = data.toString();
-    console.log(filestuff);
-  });
+//  console.log(param.temp, param.timsig_n, param.timsig_d, param.numOfBars, param.valence)
+
+  // const python = spawn('python',['Backend/seq2seq_test/generate_v0.1.py', param.temp, param.timsig_n, param.timsig_d, param.numOfBars, param.valence]);
+//  const python = spawn('python',['script1.py', param.temp, param.timsig_n, param.timsig_d, param.numOfBars, param.valence]);
+  const python = spawn('python.exe',['script1.py', '0.6', '[4,4]', '16', '2']);
+
+  // Testing
+   python.stdout.on('data', (data) => {
+//     console.log('from file...');
+//     filestuff = data.toString();
+//     console.log(filestuff);
+     console.log(data.toString());
+   });
+
+
 
   python.on('close', (code) => {
     console.log(`child process close all stdio with code ${code}`);

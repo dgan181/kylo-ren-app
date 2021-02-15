@@ -1,7 +1,2 @@
-The following content was retrived from the server: 
+The following content was retrived from the server: 
 script1.py
-332
-4
-4
-16
-2
