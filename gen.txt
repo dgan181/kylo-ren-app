@@ -1,2 +1,0 @@
-The following content was retrived from the server: 
-script1.py
