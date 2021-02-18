@@ -372,7 +372,7 @@ def chords_mel_mid(f_chords,f_durs,f_bars,allMelody,timesig,prefix):
     rc.append(melody)
     rc.append(chords)
     mf = m21.midi.translate.streamToMidiFile(rc)
-    midiOut = midi_out+str(len(all_bars))+'_'+str(timesig)+'_'+randomString(5)+'.mid'
+    midiOut = midi_out'music.mid'
     #midiOut = midi_out+str(len(all_bars)-1)+'_'+str(timesig)+'_'+prefix+'.mid'
     mf.open(midiOut, 'wb')
     mf.write()

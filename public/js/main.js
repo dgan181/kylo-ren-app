@@ -156,6 +156,11 @@ sequencer.on('change', ({column, row, state})=> {
 //   bass.triggerAttackRelease('C#2',0.1)
 // }
 
+//---------------------------------------------------------------------------------------------------------------
+// Generate Button
+//
+// Sends post request to server: model parameters
+//---------------------------------------------------------------------------------------------------------------
 
 async function save_param(){
   var temp = document.getElementById('temp').value;
@@ -181,22 +186,16 @@ async function save_param(){
     body: JSON.stringify(par)
   };
 
+  var param_p = document.getElementById('param_p');
+  param_p.innerHTML = '<p> <h3> File generating... </h3h></p>'
   var response = await fetch('/api', options);
   var data = await response.text();
-
-  var param_p = document.getElementById('param_p');
-
   param_p.innerHTML = '<p> <h3>' + data + '</h3h></p>' +
                      '<p> The following parameters were sent: </p>'
 
-
-
   window.localStorage.setItem('param',JSON.stringify(par));
-
   fetch_param();
-
-
-  }
+}
 
 function fetch_param(){
   var param = JSON.parse(window.localStorage.getItem('param'));
@@ -208,14 +207,55 @@ function fetch_param(){
                       '<p> Valence: ' + param.valence + '</p>'
   }
 
+
+//---------------------------------------------------------------------------------------------------------------
+// Play Button 
+//
+// Sends get request to server to play the generated file.
+// File is received as a ToneJS readable-JSON object.
+//---------------------------------------------------------------------------------------------------------------
+
 async function play_file(){
 
   var response = await fetch('/api');
-  var data = await response.text();
+  var data = await response.json();
 
   var param_p = document.getElementById('param_p');
 
-  param_p.innerHTML += '<p>' + data + '</p>'
+  param_p.innerHTML += '<p>' + 'playing file...' + '</p>'
+  console.log("File received")
+
+  const synths = [];
+    if (data) {
+        const now = Tone.now() + 0.5;
+        data.tracks.forEach((track) => {
+            //create a synth for each track
+            const synth = new Tone.PolySynth(Tone.Synth, {
+                envelope: {
+                    attack: 0.02,
+                    decay: 0.1,
+                    sustain: 0.3,
+                    release: 1,
+                },
+            }).toDestination();
+            synths.push(synth);
+            //schedule all of the events
+            track.notes.forEach((note) => {
+                synth.triggerAttackRelease(
+                    note.name,
+                    note.duration,
+                    note.time + now,
+                    note.velocity
+                );
+            });
+        });
+    } else {
+        //dispose the synth and make a new one
+        while (synths.length) {
+            const synth = synths.shift();
+            synth.disconnect();
+        }
+    }
 
   }
 
