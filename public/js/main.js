@@ -223,22 +223,26 @@ async function play_file(){
   var param_p = document.getElementById('param_p');
 
   param_p.innerHTML += '<p>' + 'playing file...' + '</p>'
-  console.log("File received")
+  //console.log(JSON.stringify(data))
 
-  const synths = [];
+  const instruments = [];
     if (data) {
         const now = Tone.now() + 0.5;
         data.tracks.forEach((track) => {
             //create a synth for each track
             const synth = new Tone.PolySynth(Tone.Synth, {
-                envelope: {
-                    attack: 0.02,
-                    decay: 0.1,
-                    sustain: 0.3,
-                    release: 1,
-                },
+               envelope: {
+                  attack: 0.02,
+                   decay: 0.1,
+                   sustain: 0.3,
+                   release: 1,
+               },
             }).toDestination();
-            synths.push(synth);
+
+            //const synth = new Tone.Synth();
+            //synth.oscillator.type = "sine";
+            //synth.toDestination();
+            instruments.push(synth)
             //schedule all of the events
             track.notes.forEach((note) => {
                 synth.triggerAttackRelease(
@@ -251,11 +255,10 @@ async function play_file(){
         });
     } else {
         //dispose the synth and make a new one
-        while (synths.length) {
-            const synth = synths.shift();
+        while (instruments.length) {
+            const synth = instruments.shift();
             synth.disconnect();
         }
     }
 
   }
-
