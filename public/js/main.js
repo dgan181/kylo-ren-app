@@ -168,6 +168,8 @@ async function save_param(){
   var timsig_d = document.getElementById('time-sig-den').value;
   var numOfBars = document.getElementById('numOfBars').value;
   var valence = document.getElementById('valence').value;
+  var density = document.getElementById('density').value;
+  var model = document.getElementById('model').value;
 
   var par = {
     temp: temp,
@@ -175,7 +177,8 @@ async function save_param(){
     timsig_d: timsig_d,
     numOfBars: numOfBars,
     valence: valence,
-
+    density: density,
+    model: model,
   }
 
   var options = {
@@ -204,7 +207,9 @@ function fetch_param(){
   param_p.innerHTML += '<p> Temp: ' + param.temp + '</p>' +
                       '<p> Time Signature: ' + param.timsig_n + '<span> &#47;</span> ' + param.timsig_d + '</p>' +
                       '<p> Number of Bars: ' + param.numOfBars + '</p>' +
-                      '<p> Valence: ' + param.valence + '</p>'
+                      '<p> Valence: ' + param.valence + '</p>' +
+                      '<p> Density: ' + param.density + '</p>' +
+                      '<p> Model: ' + param.model + '</p>'
   }
 
 
@@ -219,6 +224,18 @@ async function play_file(){
 
   var response = await fetch('/api');
   var data = await response.json();
+
+  var osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdContainer");
+      osmd.setOptions({
+        backend: "svg",
+        drawTitle: true,
+        // drawingParameters: "compacttight" // don't display title, composer etc., smaller margins
+        });
+      osmd
+        .load("http://localhost:3000/sheet")
+        .then(
+          function() {
+            osmd.render();});
 
   var param_p = document.getElementById('param_p');
 

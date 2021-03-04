@@ -106,7 +106,21 @@
               <option value="2" selected>2</option>
             </select>
           </label>
-
+          <label class="custom-selector">
+            Density
+            <select id="density">
+              <option value="low">Low</option>
+              <option value="med">Medium</option>
+              <option value="high" selected>High</option>
+            </select>
+          </label>
+          <label class="custom-selector">
+            Model
+            <select id="model">
+              <option value="lstm">LSTM</option>
+              <option value="transformer" selected>Transformer</option>
+            </select>
+          </label>
         </form>
       </div>
       <div class="center-param">
@@ -118,19 +132,6 @@
     <div id="param_p"></div>
     <div id="osmdContainer"/>
     <script src="https://unpkg.com/opensheetmusicdisplay@0.8.3/build/opensheetmusicdisplay.min.js"> </script>
-    <script>
-      var osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdContainer");
-      osmd.setOptions({
-        backend: "svg",
-        drawTitle: true,
-        // drawingParameters: "compacttight" // don't display title, composer etc., smaller margins
-        });
-      osmd
-        .load("http://localhost:8080/Saltarello_sample.musicxml")
-        .then(
-          function() {
-            osmd.render();});
-    </script>
   </div>
  
 <!--<div class="control-panel">

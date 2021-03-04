@@ -37,7 +37,7 @@ app.post('/api', (request,response) => {
     cwd: __model_dirname
   }
   const param = request.body
-  const python = spawn('python',['./gen_full.py', param.temp, param.timsig_n, param.timsig_d , param.numOfBars , param.valence ], options);
+  const python = spawn('python',['./gen_full.py', param.temp, param.timsig_n, param.timsig_d , param.numOfBars , param.valence, param.density, param.model ], options);
   // Testing
   python.stdout.on('data', (data) => {
     console.log('from file...');
@@ -74,4 +74,11 @@ app.get('/api', (request,response) => {
   const midiData = fs.readFileSync(__model_dirname+"/midi/music.mid")
   const midi = new Midi(midiData)
   response.json(midi)
+});
+
+app.get('/sheet', (request,response) => {
+  console.log("Sending sheet music")
+  response.set('Content-Type', 'text/xml');
+  const xmlData = fs.readFileSync(__model_dirname+"/musicxml/sheet.xml")
+  response.send(xmlData)
 });
