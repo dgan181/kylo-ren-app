@@ -76,6 +76,13 @@ app.get('/api', (request,response) => {
   response.json(midi)
 });
 
+//---------------------------------------------------------------------------------------------------------------
+// Get Request:
+//
+// Sends musicXML to client for sheet music
+//---------------------------------------------------------------------------------------------------------------
+
+
 app.get('/sheet', (request,response) => {
   console.log("Sending sheet music")
   response.set('Content-Type', 'text/xml');
