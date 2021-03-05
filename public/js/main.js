@@ -1,111 +1,114 @@
  // Instruments
  //
+
+//const { ToneEvent } = require("tone");
+
  // Instrument 1
- let drumPlayers = new Tone.Players({
-  kick : 'https://teropa.info/ext-assets/drumkit/kick.mp3',
-  hatClosed : 'https://teropa.info/ext-assets/drumkit/hatClosed.mp3',
-  hatOpen : 'https://teropa.info/ext-assets/drumkit/hatOpen2.mp3',
-  snare : 'https://teropa.info/ext-assets/drumkit/snare3.mp3',
-  tomLow : 'https://teropa.info/ext-assets/drumkit/tomLow.mp3',
-  tomMid : 'https://teropa.info/ext-assets/drumkit/tomMid.mp3',
-  tomHigh : 'https://teropa.info/ext-assets/drumkit/tomHigh.mp3',
-  ride : 'https://teropa.info/ext-assets/drumkit/ride.mp3',
-  crash : 'https://teropa.info/ext-assets/drumkit/hatOpen.mp3'
-}).toDestination()
+//  let drumPlayers = new Tone.Players({
+//   kick : 'https://teropa.info/ext-assets/drumkit/kick.mp3',
+//   hatClosed : 'https://teropa.info/ext-assets/drumkit/hatClosed.mp3',
+//   hatOpen : 'https://teropa.info/ext-assets/drumkit/hatOpen2.mp3',
+//   snare : 'https://teropa.info/ext-assets/drumkit/snare3.mp3',
+//   tomLow : 'https://teropa.info/ext-assets/drumkit/tomLow.mp3',
+//   tomMid : 'https://teropa.info/ext-assets/drumkit/tomMid.mp3',
+//   tomHigh : 'https://teropa.info/ext-assets/drumkit/tomHigh.mp3',
+//   ride : 'https://teropa.info/ext-assets/drumkit/ride.mp3',
+//   crash : 'https://teropa.info/ext-assets/drumkit/hatOpen.mp3'
+// }).toDestination()
 
  //
  // Instrument 2
 
-let bass = new Tone.Synth({
-  oscillator:{type:'sawtooth'},
-  volume: -4
-})
+// let bass = new Tone.Synth({
+//   oscillator:{type:'sawtooth'},
+//   volume: -4
+// })
 
-let bassFilter = new Tone.Filter({type:'lowpass', frequency:2000})
+// let bassFilter = new Tone.Filter({type:'lowpass', frequency:2000})
 
-bass.connect(bassFilter);
-bassFilter.toDestination();
+// bass.connect(bassFilter);
+// bassFilter.toDestination();
 
 //
 // Instrument 3
 
-let audio = new Audio('Assets/127155__daphne-in-wonderland__celtic-harp-c2.wav');
+// let audio = new Audio('Assets/127155__daphne-in-wonderland__celtic-harp-c2.wav');
 
-let leadSampler = new Tone.Sampler({
-  urls: {
-    'C2': 'Assets/127155__daphne-in-wonderland__celtic-harp-c2.wav'
-  },
-  volume: -4
-})
+// let leadSampler = new Tone.Sampler({
+//   urls: {
+//     'C2': 'Assets/127155__daphne-in-wonderland__celtic-harp-c2.wav'
+//   },
+//   volume: -4
+// })
 
-let leadDelay = new Tone.PingPongDelay('8n',0.3)
-leadSampler.connect(leadDelay);
-leadDelay.toDestination();
+// let leadDelay = new Tone.PingPongDelay('8n',0.3)
+// leadSampler.connect(leadDelay);
+// leadDelay.toDestination();
 
-let leadReverb = new Tone.Reverb({decay: 3, wet: 0.5}).toDestination()
-leadSampler.connect(leadReverb);
+// let leadReverb = new Tone.Reverb({decay: 3, wet: 0.5}).toDestination()
+// leadSampler.connect(leadReverb);
 
 //
 // ________Patterns__________
 
 //  1.Drum Part
- let drumPattern = [
-  ['0:0:0','kick'],
-  ['0:1:0','hatClosed'],
-  ['0:1:2','kick'],
-  ['0:2:0','kick'],
-  ['0:3:0','hatClosed'],
-  ['1:0:0','kick'],
-  ['1:1:0','hatClosed'],
-  ['1:2:0','kick'],
-  ['1:2:3','kick'],
-  ['1:3:0','hatClosed'],
-  ['1:3:2','kick'],
-  ['1:3:2','hatOpen'],
-];
+//  let drumPattern = [
+//   ['0:0:0','kick'],
+//   ['0:1:0','hatClosed'],
+//   ['0:1:2','kick'],
+//   ['0:2:0','kick'],
+//   ['0:3:0','hatClosed'],
+//   ['1:0:0','kick'],
+//   ['1:1:0','hatClosed'],
+//   ['1:2:0','kick'],
+//   ['1:2:3','kick'],
+//   ['1:3:0','hatClosed'],
+//   ['1:3:2','kick'],
+//   ['1:3:2','hatOpen'],
+// ];
 
-let drumPart = new Tone.Part((time, drum)=>{
-    drumPlayers.player(drum).start(time);
-  }, drumPattern ).start();
+// let drumPart = new Tone.Part((time, drum)=>{
+//     drumPlayers.player(drum).start(time);
+//   }, drumPattern ).start();
 
-  drumPart.loop = true;
-  drumPart.loopStart = 0;
-  drumPart.loopEnd = '2m';
+//   drumPart.loop = true;
+//   drumPart.loopStart = 0;
+//   drumPart.loopEnd = '2m';
 
 
 
 // 2. Bass Part
 
-let bassPattern = [
-  ['0:0:0', 'C#2'],
-  ['0:0:3', 'C#2'],
-  ['0:1:2', 'E1']
+// let bassPattern = [
+//   ['0:0:0', 'C#2'],
+//   ['0:0:3', 'C#2'],
+//   ['0:1:2', 'E1']
 
-];
+// ];
 
-let bassPart = new Tone.Part((time,note) =>{
-  bass.triggerAttackRelease(note,0.1,time);
- },bassPattern).start();
+// let bassPart = new Tone.Part((time,note) =>{
+//   bass.triggerAttackRelease(note,0.1,time);
+//  },bassPattern).start();
 
-  bassPart.loop = true;
-  bassPart.loopStart = 0;
-  bassPart.loopEnd ='2n';
+//   bassPart.loop = true;
+//   bassPart.loopStart = 0;
+//   bassPart.loopEnd ='2n';
 
 
 
 // 3. Lead Part
 
 
- let leadPattern = [
-];
+//  let leadPattern = [
+// ];
 
- let leadPart = new Tone.Part((time,note) => {
-  leadSampler.triggerAttackRelease(note,'2n',time);
- },leadPattern).start();
+//  let leadPart = new Tone.Part((time,note) => {
+//   leadSampler.triggerAttackRelease(note,'2n',time);
+//  },leadPattern).start();
 
-  leadPart.loop = true;
-  leadPart.loopStart = 0;
-  leadPart.loopEnd ='2m';
+//   leadPart.loop = true;
+//   leadPart.loopStart = 0;
+//   leadPart.loopEnd ='2m';
 
 
   //
@@ -168,6 +171,8 @@ async function save_param(){
   var timsig_d = document.getElementById('time-sig-den').value;
   var numOfBars = document.getElementById('numOfBars').value;
   var valence = document.getElementById('valence').value;
+  var density = document.getElementById('density').value;
+  var model = document.getElementById('model').value;
 
   var par = {
     temp: temp,
@@ -175,7 +180,8 @@ async function save_param(){
     timsig_d: timsig_d,
     numOfBars: numOfBars,
     valence: valence,
-
+    density: density,
+    model: model,
   }
 
   var options = {
@@ -204,7 +210,9 @@ function fetch_param(){
   param_p.innerHTML += '<p> Temp: ' + param.temp + '</p>' +
                       '<p> Time Signature: ' + param.timsig_n + '<span> &#47;</span> ' + param.timsig_d + '</p>' +
                       '<p> Number of Bars: ' + param.numOfBars + '</p>' +
-                      '<p> Valence: ' + param.valence + '</p>'
+                      '<p> Valence: ' + param.valence + '</p>' +
+                      '<p> Density: ' + param.density + '</p>' +
+                      '<p> Model: ' + param.model + '</p>'
   }
 
 
@@ -213,49 +221,64 @@ function fetch_param(){
 //
 // Sends get request to server to play the generated file.
 // File is received as a ToneJS readable-JSON object.
+// and upload
 //---------------------------------------------------------------------------------------------------------------
 
 async function play_file(){
-
+  //Fetch musicJSON
   var response = await fetch('/api');
   var data = await response.json();
+  var instrument_names = []
+  data.tracks.forEach((track) => {
+    instrument_names.push(track.name)
+  })
+  console.log(instrument_names)
+  // Fetch musicXML
+  var osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdContainer");
+      osmd.setOptions({
+        backend: "svg",
+        drawTitle: true,
+        });
+      osmd
+        .load("http://localhost:3000/sheet")
+        .then(
+          function() {
+            osmd.render();});
 
   var param_p = document.getElementById('param_p');
+  param_p.innerHTML = '<p>' + 'playing file...' + '</p>'
 
-  param_p.innerHTML += '<p>' + 'playing file...' + '</p>'
-  console.log("File received")
-
-  const synths = [];
+  // Play musicJSON with tone
+  var instruments = [];
     if (data) {
         const now = Tone.now() + 0.5;
         data.tracks.forEach((track) => {
-            //create a synth for each track
-            const synth = new Tone.PolySynth(Tone.Synth, {
-                envelope: {
-                    attack: 0.02,
-                    decay: 0.1,
-                    sustain: 0.3,
-                    release: 1,
-                },
-            }).toDestination();
-            synths.push(synth);
+            //get instrument from sample library -- courtsey of  nbrosowsky/tonejs-instruments 
+            var instrument = SampleLibrary.load({
+              instruments: track.name.toLowerCase(),
+              baseUrl: "http://localhost:8080/",
+              ext: ".[wav|mp3|ogg]"
+              });
+            instrument.toDestination()
+            instruments.push(instrument)
             //schedule all of the events
             track.notes.forEach((note) => {
-                synth.triggerAttackRelease(
-                    note.name,
-                    note.duration,
-                    note.time + now,
-                    note.velocity
-                );
+                // play instrument sound
+                Tone.loaded().then( ()=> instrument.triggerAttackRelease(
+                  note.name,
+                  note.duration,
+                  note.time + now,
+                  note.velocity) 
+                )
             });
+                
         });
     } else {
-        //dispose the synth and make a new one
-        while (synths.length) {
-            const synth = synths.shift();
-            synth.disconnect();
+        //dispose the instrument and make a new one
+        while (instruments.length) {
+            const instrument = instruments.shift();
+            instrument.disconnect();
         }
     }
 
   }
-

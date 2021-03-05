@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
   <script src="https://cdn.jsdelivr.net/npm/tone@14.7.39/build/Tone.min.js"></script>
+  <script src="./js/tonejs-instruments/Tonejs-Instruments.js"></script>
   <!-- <script src ='https://cdn.jsdelivr.net/npm/nexusui@latest/dist/NexusUI.js'> </script>
   <script src ='https://cdn.jsdelivr.net/npm/nexusui@latest/dist/NexusUI.min.js'> </script>-->
   <meta name="theme-color" content="#fafafa">
@@ -45,7 +46,7 @@
   <style>
   .control-panel {
     border : 1px solid #ddd;
-    box-shadow : 1px 1px 1px 1px ##eee;
+    box-shadow : 1px 1px 1px 1px #eee;
   }
 
   form {
@@ -106,7 +107,21 @@
               <option value="2" selected>2</option>
             </select>
           </label>
-
+          <label class="custom-selector">
+            Density
+            <select id="density">
+              <option value="low">Low</option>
+              <option value="med">Medium</option>
+              <option value="high" selected>High</option>
+            </select>
+          </label>
+          <label class="custom-selector">
+            Model
+            <select id="model">
+              <option value="lstm">LSTM</option>
+              <option value="transformer" selected>Transformer</option>
+            </select>
+          </label>
         </form>
       </div>
       <div class="center-param">
@@ -116,7 +131,10 @@
   </div>
   <div class="column">
     <div id="param_p"></div>
+    <div id="osmdContainer"/>
+    <script src="https://unpkg.com/opensheetmusicdisplay@0.8.3/build/opensheetmusicdisplay.min.js"> </script>
   </div>
+ 
 <!--<div class="control-panel">
 
   <button id="start">
