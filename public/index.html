@@ -63,16 +63,22 @@
     box-sizing: border-box;
   }
 
-  .column {
-  float: left;
-  width: 50%;
-  }
+<!--  .column {-->
+<!--  float: left;-->
+<!--  width: 50%;-->
+<!--  }-->
 
   .row:after {
   content: "";
   display: table;
   clear: both;
   }
+
+  .btn{
+  background-color: #F79996;
+  }
+
+
 
   </style>
   <!--[if IE]>
@@ -81,10 +87,14 @@
 
   <!-- Add your site or application content here -->
   <div class="row">
-    <div class="column">
-      <h2> Input Parameters</h2>
-      <div class="input-param">
-        <form id="input-param-form">
+    <div class="column" align="center">
+      <div class='spinner-wrapper'>
+        <div class="spinner"></div>
+      </div>
+
+      <h2 style="text-align: center"> Input Parameters </h2>
+      <div class="input-param" align="center">
+        <form id="input-param-form" >
           <label class="custom-input">
             Temperature
             <input id="temp" type="text" onkeypress="return isNumberKey(this, event);" placeholder=" Value less than 1 is desriable"/>
@@ -129,7 +139,8 @@
       <button onclick="play_file()" id="play" class="btn"> Play </button>
     </div>
   </div>
-  <div class="column">
+
+  <div class="row">
     <div id="param_p"></div>
     <div id="osmdContainer"/>
     <script src="https://unpkg.com/opensheetmusicdisplay@0.8.3/build/opensheetmusicdisplay.min.js"> </script>
@@ -164,7 +175,14 @@
     window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
     ga('create', 'UA-XXXXX-Y', 'auto'); ga('set','transport','beacon'); ga('send', 'pageview')
   </script>
-  <script src="https://www.google-analytics.com/analytics.js" async></script>
+  <script src="https://www.google-analytics.com/analytics.js" async></script><script>
+    let spinnerWrapper = document.querySelector('.spinner-wrapper');
+
+    window.addEventListener('load', function () {
+        // spinnerWrapper.style.display = 'none';
+        spinnerWrapper.parentElement.removeChild(spinnerWrapper);
+    });
+</script>
 </body>
 
 </html>
