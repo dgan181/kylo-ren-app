@@ -11,6 +11,6 @@ View webpage in browser at ```http//localhost:3000```
 also to serve the instruments, from the app directory run:
 
 ``` 
-$ htttp-server ./public/js/tonejs-instruments/samples -p 8080 --cors
+$ http-server ./public/js/tonejs-instruments/samples -p 8080 --cors
 ```
 
