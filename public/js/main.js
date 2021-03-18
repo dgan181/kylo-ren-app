@@ -166,6 +166,19 @@ sequencer.on('change', ({column, row, state})=> {
 //---------------------------------------------------------------------------------------------------------------
 
 async function save_param(){
+  document.getElementById('generate').innerHTML += "<span class='spinner-border spinner-border-sm'   role='status' aria-hidden='true'  ></span>"
+
+//  buttons.addEventListener('click', ()=> {
+//  console.log('at least we are here')
+////  var newSpan = document.createElement('span',[class="spinner-border spinner-border-sm"
+////    role="status"
+////    aria-hidden="true"]);
+////  document.getElementById('btn').appendChild(newSpan);
+////
+//  })
+
+
+
   var temp = document.getElementById('temp').value;
   var timsig_n = document.getElementById('time-sig-num').value;
   var timsig_d = document.getElementById('time-sig-den').value;
