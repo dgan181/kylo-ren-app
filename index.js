@@ -52,6 +52,12 @@ app.post('/api', (request,response) => {
     console.log(uint8arrayToString(data));
   });
 
+    // Handle error output
+  python.stderr.on('data', (data) => {
+    // As said before, convert the Uint8Array to a readable string.
+    console.log(uint8arrayToString(data));
+  });
+
   python.on('close', (code) => {
     console.log(`child process close all stdio with code ${code}`);
     // send data to browser
@@ -74,6 +80,20 @@ app.get('/api', (request,response) => {
   const midiData = fs.readFileSync(__model_dirname+"/midi/music.mid")
   const midi = new Midi(midiData)
   response.json(midi)
+});
+
+//---------------------------------------------------------------------------------------------------------------
+// Get Request:
+//
+// Sends musicXML to client for sheet music
+//---------------------------------------------------------------------------------------------------------------
+
+
+app.get('/sheet', (request,response) => {
+  console.log("Sending sheet music")
+  response.set('Content-Type', 'text/xml');
+  const xmlData = fs.readFileSync(__model_dirname+"/musicxml/sheet.xml")
+  response.send(xmlData)
 });
 
 //---------------------------------------------------------------------------------------------------------------

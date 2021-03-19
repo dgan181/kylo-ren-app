@@ -166,7 +166,7 @@ sequencer.on('change', ({column, row, state})=> {
 //---------------------------------------------------------------------------------------------------------------
 
 async function save_param(){
-  document.getElementById('generate').innerHTML += "<span class='spinner-border spinner-border-sm'   role='status' aria-hidden='true'  ></span>"
+  document.getElementById('generate').innerHTML += "<span id='generateSpinner' class='spinner-border spinner-border-sm'   role='status' aria-hidden='true'  ></span>"
 
 //  buttons.addEventListener('click', ()=> {
 //  console.log('at least we are here')
@@ -209,8 +209,11 @@ async function save_param(){
 //  param_p.innerHTML = '<p> <h3> File generating... </h3h></p>'
   var response = await fetch('/api', options);
   var data = await response.text();
-  var spinner = document.getElementById('generate')
-  spinner.removeChild('span')
+//  var spinner = document.getElementById('generate')
+//  spinner.removeChild('span')
+  var spinner = document.getElementById('generateSpinner')
+  spinner.remove()
+
 //  param_p.innerHTML = '<p> <h3>' + data + '</h3h></p>' +
 //                     '<p> The following parameters were sent: </p>'
 //
@@ -241,7 +244,7 @@ function fetch_param(){
 
 async function play_file(){
 
-  document.getElementById('play').innerHTML += "<span class='spinner-border spinner-border-sm'   role='status' aria-hidden='true'  ></span>"
+  document.getElementById('play').innerHTML += "<span id = 'playSpinner' class='spinner-border spinner-border-sm'   role='status' aria-hidden='true'  ></span>"
 
   //Fetch musicJSON
   var response = await fetch('/api');
@@ -300,8 +303,8 @@ async function play_file(){
     }
 
 
-    var spinner = document.getElementById('play')
-    spinner.removeChild('span')
+    var spinner = document.getElementById('playSpinner')
+    spinner.remove()
 
 
   }
