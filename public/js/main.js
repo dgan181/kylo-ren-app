@@ -205,15 +205,17 @@ async function save_param(){
     body: JSON.stringify(par)
   };
 
-  var param_p = document.getElementById('param_p');
-  param_p.innerHTML = '<p> <h3> File generating... </h3h></p>'
+//  var param_p = document.getElementById('param_p');
+//  param_p.innerHTML = '<p> <h3> File generating... </h3h></p>'
   var response = await fetch('/api', options);
   var data = await response.text();
-  param_p.innerHTML = '<p> <h3>' + data + '</h3h></p>' +
-                     '<p> The following parameters were sent: </p>'
-
-  window.localStorage.setItem('param',JSON.stringify(par));
-  fetch_param();
+  var spinner = document.getElementById('generate')
+  spinner.removeChild('span')
+//  param_p.innerHTML = '<p> <h3>' + data + '</h3h></p>' +
+//                     '<p> The following parameters were sent: </p>'
+//
+//  window.localStorage.setItem('param',JSON.stringify(par));
+//  fetch_param();
 }
 
 function fetch_param(){
@@ -238,6 +240,9 @@ function fetch_param(){
 //---------------------------------------------------------------------------------------------------------------
 
 async function play_file(){
+
+  document.getElementById('play').innerHTML += "<span class='spinner-border spinner-border-sm'   role='status' aria-hidden='true'  ></span>"
+
   //Fetch musicJSON
   var response = await fetch('/api');
   var data = await response.json();
@@ -258,8 +263,8 @@ async function play_file(){
           function() {
             osmd.render();});
 
-  var param_p = document.getElementById('param_p');
-  param_p.innerHTML = '<p>' + 'playing file...' + '</p>'
+//  var param_p = document.getElementById('param_p');
+//  param_p.innerHTML = '<p>' + 'playing file...' + '</p>'
 
   // Play musicJSON with tone
   var instruments = [];
@@ -293,5 +298,10 @@ async function play_file(){
             instrument.disconnect();
         }
     }
+
+
+    var spinner = document.getElementById('play')
+    spinner.removeChild('span')
+
 
   }
