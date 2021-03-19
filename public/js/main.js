@@ -166,18 +166,9 @@ sequencer.on('change', ({column, row, state})=> {
 //---------------------------------------------------------------------------------------------------------------
 
 async function save_param(){
+
+  //Add a span class for the spinner object
   document.getElementById('generate').innerHTML += "<span id='generateSpinner' class='spinner-border spinner-border-sm'   role='status' aria-hidden='true'  ></span>"
-
-//  buttons.addEventListener('click', ()=> {
-//  console.log('at least we are here')
-////  var newSpan = document.createElement('span',[class="spinner-border spinner-border-sm"
-////    role="status"
-////    aria-hidden="true"]);
-////  document.getElementById('btn').appendChild(newSpan);
-////
-//  })
-
-
 
   var temp = document.getElementById('temp').value;
   var timsig_n = document.getElementById('time-sig-num').value;
@@ -205,15 +196,16 @@ async function save_param(){
     body: JSON.stringify(par)
   };
 
-//  var param_p = document.getElementById('param_p');
-//  param_p.innerHTML = '<p> <h3> File generating... </h3h></p>'
   var response = await fetch('/api', options);
   var data = await response.text();
-//  var spinner = document.getElementById('generate')
-//  spinner.removeChild('span')
+
+  // Remove the spinner object as the function ends
   var spinner = document.getElementById('generateSpinner')
   spinner.remove()
 
+
+//  var param_p = document.getElementById('param_p');
+//  param_p.innerHTML = '<p> <h3> File generating... </h3h></p>'
 //  param_p.innerHTML = '<p> <h3>' + data + '</h3h></p>' +
 //                     '<p> The following parameters were sent: </p>'
 //
@@ -243,8 +235,8 @@ function fetch_param(){
 //---------------------------------------------------------------------------------------------------------------
 
 async function play_file(){
-
-  document.getElementById('play').innerHTML += "<span id = 'playSpinner' class='spinner-border spinner-border-sm'   role='status' aria-hidden='true'  ></span>"
+  //Add a span class for the spinner object
+  document.getElementById('play').innerHTML += "<span id ='playSpinner' class='spinner-border spinner-border-sm'   role='status' aria-hidden='true'  ></span>"
 
   //Fetch musicJSON
   var response = await fetch('/api');
@@ -254,6 +246,7 @@ async function play_file(){
     instrument_names.push(track.name)
   })
   console.log(instrument_names)
+
   // Fetch musicXML
   var osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdContainer");
       osmd.setOptions({
@@ -302,7 +295,7 @@ async function play_file(){
         }
     }
 
-
+    // Remove the spinner object as the function ends
     var spinner = document.getElementById('playSpinner')
     spinner.remove()
 
