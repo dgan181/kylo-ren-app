@@ -402,3 +402,25 @@ button {
   opacity: 1;
 }
 
+.writtendocs{
+
+  border: 1px solid #ddd;
+  box-shadow: 1px 1px 3px 1px #eee;
+  padding: 20px 10px;
+  margin:10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.osmd{
+  border: 1px solid #ddd;
+  box-shadow: 1px 1px 3px 1px #eee;
+  padding: 20px 10px;
+  margin:10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}

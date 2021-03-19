@@ -247,17 +247,19 @@ async function play_file(){
   })
   console.log(instrument_names)
 
-  // Fetch musicXML
+  // Fetch musicXML Container
   var osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdContainer");
-      osmd.setOptions({
-        backend: "svg",
-        drawTitle: true,
-        });
-      osmd
-        .load("http://localhost:3000/sheet")
-        .then(
-          function() {
-            osmd.render();});
+
+  osmd.setOptions({
+    backend: "svg",
+    drawTitle: true,
+    });
+
+  osmd
+    .load("http://localhost:3000/sheet")
+    .then(
+      function() {
+        osmd.render();});
 
 //  var param_p = document.getElementById('param_p');
 //  param_p.innerHTML = '<p>' + 'playing file...' + '</p>'
