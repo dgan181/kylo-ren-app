@@ -254,8 +254,8 @@ async function play_file(){
     backend: "svg",
     drawTitle: false,
     drawComposer: false,
-//    drawPartNames: false,
-//    renderSingleHorizontalStaffline: true
+    drawPartNames: false,
+    renderSingleHorizontalStaffline: true
     });
 
   osmd
