@@ -253,7 +253,7 @@ async function play_file(){
   osmd.setOptions({
     backend: "svg",
     drawTitle: false,
-//    drawComposer: false,
+    drawComposer: false,
 //    drawPartNames: false,
 //    renderSingleHorizontalStaffline: true
     });
