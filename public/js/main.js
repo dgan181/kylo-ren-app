@@ -252,13 +252,17 @@ async function play_file(){
 
   osmd.setOptions({
     backend: "svg",
-    drawTitle: true,
+    drawTitle: false,
+//    drawComposer: false,
+//    drawPartNames: false,
+//    renderSingleHorizontalStaffline: true
     });
 
   osmd
     .load("http://localhost:3000/sheet")
     .then(
       function() {
+        window.osmd = osmd; //give access to osmd object in Browser console, e.g. for osmd.setOptions()
         osmd.render();});
 
 //  var param_p = document.getElementById('param_p');
