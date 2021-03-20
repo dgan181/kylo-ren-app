@@ -197,13 +197,20 @@ async function save_param(){
   };
 
   var response = await fetch('/api', options);
-  var data = await response.text();
+  var data = await response.json();
+  console.log(data.message)
 
   // Remove the spinner object as the function ends
   var spinner = document.getElementById('generateSpinner')
   spinner.remove()
-
-
+  if (data.code) {
+    var osmd = document.getElementById('osmdContainer');
+    osmd.innerHTML = '<h3> Something has gone wrong somewhere </h3>'
+  }
+  else{
+    display_sheet_music()
+  }
+  
 //  var param_p = document.getElementById('param_p');
 //  param_p.innerHTML = '<p> <h3> File generating... </h3h></p>'
 //  param_p.innerHTML = '<p> <h3>' + data + '</h3h></p>' +
@@ -211,6 +218,28 @@ async function save_param(){
 //
 //  window.localStorage.setItem('param',JSON.stringify(par));
 //  fetch_param();
+}
+
+function display_sheet_music() {
+
+     // Fetch musicXML Container
+  var osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdContainer");
+
+  osmd.setOptions({
+    backend: "svg",
+    drawTitle: false,
+    drawComposer: false,
+    drawPartNames: true,
+    renderSingleHorizontalStaffline: false
+    });
+
+  osmd
+    .load("http://localhost:3000/sheet")
+    .then(
+      function() {
+        window.osmd = osmd; //give access to osmd object in Browser console, e.g. for osmd.setOptions()
+        osmd.render();});
+  
 }
 
 function fetch_param(){
@@ -260,24 +289,6 @@ async function play_file(){
     instrument_names.push(track.name)
   })
   console.log(instrument_names)
-
-  // Fetch musicXML Container
-  var osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdContainer");
-
-  osmd.setOptions({
-    backend: "svg",
-    drawTitle: false,
-    drawComposer: false,
-    drawPartNames: false,
-    renderSingleHorizontalStaffline: true
-    });
-
-  osmd
-    .load("http://localhost:3000/sheet")
-    .then(
-      function() {
-        window.osmd = osmd; //give access to osmd object in Browser console, e.g. for osmd.setOptions()
-        osmd.render();});
 
 //  var param_p = document.getElementById('param_p');
 //  param_p.innerHTML = '<p>' + 'playing file...' + '</p>'

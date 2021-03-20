@@ -58,13 +58,20 @@ app.post('/api', (request,response) => {
     // As said before, convert the Uint8Array to a readable string.
     console.log(uint8arrayToString(data));
   });
-
+  
   python.on('close', (code) => {
     console.log(`child process close all stdio with code ${code}`);
     // send data to browser
+    var message
     if(code == 0){ 
-    response.send("File generated!");}
-    else{response.send("Error in generating file");}
+    message = "File generated!" }
+    else{ 
+      message = "Error in generating file"}
+    const response_message = {
+      message: message,
+      code: code
+    }
+    response.json(response_message)
   });
 });
 
