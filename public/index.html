@@ -138,7 +138,7 @@
 
                     <!--     Div 5    -->
 
-                    <label class="custom-selector">Density</label>
+                    <label for="density"class="custom-selector">Density</label>
                     <select id="density">
                         <option value="low">Low</option>
                         <option value="med">Medium</option>
@@ -147,105 +147,30 @@
 
 
 
-                    <label class="custom-selector">Model</label>
+                    <label for="model" class="custom-selector">Model</label>
                     <select id="model">
                         <option value="lstm">LSTM</option>
                         <option value="transformer" selected>Transformer</option>
                     </select>
-                
+
+                    <div class="center-param">
+                        <button onclick="save_param()" id="generate" class="btn"> Generate </button>
+                        <button onclick="play_file()" id="play" class="btn"> Play </button>
+                    </div>
                 </form>
-                
+
             </div>
 
         </section>
     </div>
 
+    <section class="sheet-music">
+        <h2 style="text-align: center"> Kylo Ren </h2>
+        <div id="osmdContainer" class="osmd" />
+    </section>
 
 
-
-    <div class="row">
-
-        <div class="col-sm-6" align="center">
-
-            <!--      Header    -->
-            <h2 style="text-align: center"> Input Parameters </h2>
-
-            <!--      Input Div -->
-            <div class="input-param" align="center">
-                <form id="input-param-form">
-
-                    <!--   Div 1  -->
-                    <label class="custom-input">
-                        Temperature
-                        <input id="temp" type="text" onkeypress="return isNumberKey(this, event);"
-                            placeholder=" Value less than 1 is desriable" />
-                    </label>
-
-                    <!--   Div 2    -->
-                    <label class="custom-input-2">
-                        Time Signature <br>
-                        <input id="time-sig-num" type="number" min="1" value="4"> <span> &#47;</span> <input
-                            id="time-sig-den" type="number" min="1" name="value" value="4">
-                    </label>
-
-                    <!--     Div 3    -->
-                    <label class="custom-input">
-                        Number of Bars
-                        <input id="numOfBars" type="number" min="8" max="40" value="16" />
-                    </label>
-
-                    <!--     Div 4    -->
-                    <label class="custom-selector">
-                        Valence
-                        <select id="valence">
-                            <option value="-2">-2</option>
-                            <option value="-1">-1</option>
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2" selected>2</option>
-                        </select>
-                    </label>
-
-                    <!--     Div 5    -->
-                    <label class="custom-selector">
-                        Density
-                        <select id="density">
-                            <option value="low">Low</option>
-                            <option value="med">Medium</option>
-                            <option value="high" selected>High</option>
-                        </select>
-                    </label>
-
-                    <!--     Div 6    -->
-                    <label class="custom-selector">
-                        Model
-                        <select id="model">
-                            <option value="lstm">LSTM</option>
-                            <option value="transformer" selected>Transformer</option>
-                        </select>
-                    </label>
-
-                </form>
-            </div>
-
-            <!--      ADD THE GENERATE AND PLAY BTNS    -->
-            <div class="center-param">
-                <button onclick="save_param()" id="generate" class="btn"> Generate </button>
-                <button onclick="play_file()" id="play" class="btn"> Play </button>
-            </div>
-        </div>
-
-
-        <!--      OSMD CONTAINER    -->
-        <div class="row">
-            <div id="param_p"></div>
-            <h2 style="text-align: center"> Kylo Ren </h2>
-            <div id="osmdContainer" class="osmd" />
-            <script src="https://unpkg.com/opensheetmusicdisplay@0.8.3/build/opensheetmusicdisplay.min.js"> </script>
-        </div>
-    </div>
-
-
+    <script src="https://unpkg.com/opensheetmusicdisplay@0.8.3/build/opensheetmusicdisplay.min.js"> </script>
     <script src="https://cdn.jsdelivr.net/npm/tone@14.7.39/build/Tone.min.js"></script>
     <script src="js/vendor/modernizr-3.8.0.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
