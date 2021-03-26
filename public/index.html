@@ -2,233 +2,271 @@
 <html class="no-js" lang="">
 
 <head>
-  <meta charset="utf-8">
-  <title></title>
+    <meta charset="utf-8">
+    <title></title>
 
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="apple-touch-icon" href="icon.png">
-  <!-- Place favicon.ico in the root directory -->
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="icon.png">
+    <!-- Place favicon.ico in the root directory -->
 
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
 
-  <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet"/>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
-  <!-- MDB -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css" rel="stylesheet"/>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css" rel="stylesheet" />
 
-  <script src="https://cdn.jsdelivr.net/npm/tone@14.7.39/build/Tone.min.js"></script>
-  <script src="./js/tonejs-instruments/Tonejs-Instruments.js"></script>
-<!--  <script src ='https://cdn.jsdelivr.net/npm/nexusui@latest/dist/NexusUI.js'> </script>-->
-<!--  <script src ='https://cdn.jsdelivr.net/npm/nexusui@latest/dist/NexusUI.min.js'> </script>-->
-  <meta name="theme-color" content="#fafafa">
+    <script src="https://cdn.jsdelivr.net/npm/tone@14.7.39/build/Tone.min.js"></script>
+    <script src="./js/tonejs-instruments/Tonejs-Instruments.js"></script>
+    <!--  <script src ='https://cdn.jsdelivr.net/npm/nexusui@latest/dist/NexusUI.js'> </script>-->
+    <!--  <script src ='https://cdn.jsdelivr.net/npm/nexusui@latest/dist/NexusUI.min.js'> </script>-->
+    <meta name="theme-color" content="#fafafa">
 
-  <script type="text/javascript">
-    function isNumberKey(txt, evt) {
-      var charCode = (evt.which) ? evt.which : evt.keyCode;
-      if (charCode == 46) {
-        //Check if the text already contains the . character
-        if (txt.value.indexOf('.') === -1) {
-          return true;
-        } else {
-          return false;
+    <script type="text/javascript">
+        function isNumberKey(txt, evt) {
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode == 46) {
+                //Check if the text already contains the . character
+                if (txt.value.indexOf('.') === -1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                if (charCode > 31 &&
+                    (charCode < 48 || charCode > 57))
+                    return false;
+            }
+            return true;
         }
-      } else {
-        if (charCode > 31 &&
-          (charCode < 48 || charCode > 57))
-          return false;
-      }
-      return true;
-    }
-  </script>
-
+    </script>
 
 
 </head>
 
 <body>
 
-  <style>
-  .control-panel {
-    border : 1px solid #ddd;
-    box-shadow : 1px 1px 1px 1px #eee;
-  }
+    <style>
+        .control-panel {
+            border: 1px solid #ddd;
+            box-shadow: 1px 1px 1px 1px #eee;
+        }
 
-  form {
-    width: 300px;
+        form {
+            width: 300px;
 
-  }
-  h2 {
-    text-align: center;
-    letter-spacing: 0.05em;
+        }
 
-  }
-  *, *::after, *::before {
-    box-sizing: border-box;
-  }
+        h2 {
+            text-align: center;
+            letter-spacing: 0.05em;
 
-/* <!--  .column {-->
+        }
+
+        *,
+        *::after,
+        *::before {
+            box-sizing: border-box;
+        }
+
+        /* <!--  .column {-->
 <!--  float: left;-->
 <!--  width: 50%;-->
 <!--  }--> */
 
-  .row:after {
-  content: "";
-  display: table;
-  clear: both;
-  }
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
 
-  .btn{
-  background-color: #F79996;
-  }
-
-
-
-  </style>
-  <!--[if IE]>
+        .btn {
+            background-color: #F79996;
+        }
+    </style>
+    <!--[if IE]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
 
-  <!-- Add your site or application content here -->
+    <!-- Add your site or application content here -->
 
-  <!--  Left Element of documentation-->
+    <!--  Left Element of documentation-->
 
 
-  <!--  Center Form-->
-  <div class="row">
-    <div class="col-sm-6" align="left">
+    <!--  Center Form-->
+    <div class="hero-bg">
+        <section class="right">
+            <h1> AI MUSIC</h1>
+        </section>
 
-      <!--      Header    -->
-      <h2 style="text-align: center"> AI-powered Flute and Piano, New Age Music </h2>
+        <section class="left">
 
-      <!--      Input Div -->
-      <p class="writtendocs" align="center">
-          What is Lorem Ipsum?
+            <div class="form-container">
 
-      </p>
+                <form action="">
+                    <label for="temp " class="custom-input">Temperature </label>
+                    <input id="temp" type="text" onkeypress="return isNumberKey(this, event);"
+                        placeholder=" Value less than 1 is desriable" />
+
+                    <!--   Div 2    -->
+
+                    <label for="time-sig-num" class="custom-input-2">Time Signature</label>
+                    <input id="time-sig-num" type="number" min="1" value="4"> <span> &#47;</span> <input
+                        id="time-sig-den" type="number" min="1" name="value" value="4">
+
+                    <!--     Div 3    -->
+
+                    <label for="numOfBars" class="custom-input"> Number of Bars</label>
+                    <input id="numOfBars" type="number" min="8" max="40" value="16" />
+
+                    <!--     Div 4    -->
+
+                    <label for="valence" class="custom-selector">Valence</label>
+                    <select id="valence">
+                        <option value="-2">-2</option>
+                        <option value="-1">-1</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2" selected>2</option>
+                    </select>
+
+                    <!--     Div 5    -->
+
+                    <label class="custom-selector">Density</label>
+                    <select id="density">
+                        <option value="low">Low</option>
+                        <option value="med">Medium</option>
+                        <option value="high" selected>High</option>
+                    </select>
+
+
+
+                    <label class="custom-selector">Model</label>
+                    <select id="model">
+                        <option value="lstm">LSTM</option>
+                        <option value="transformer" selected>Transformer</option>
+                    </select>
+                
+                </form>
+                
+            </div>
+
+        </section>
     </div>
 
 
-    <div class="col-sm-6" align="center">
-
-      <!--      Header    -->
-      <h2 style="text-align: center"> Input Parameters </h2>
-
-      <!--      Input Div -->
-      <div class="input-param" align="center">
-        <form id="input-param-form" >
-
-          <!--   Div 1  -->
-          <label class="custom-input">
-            Temperature
-            <input id="temp" type="text" onkeypress="return isNumberKey(this, event);" placeholder=" Value less than 1 is desriable"/>
-          </label>
-
-          <!--   Div 2    -->
-          <label class="custom-input-2">
-            Time Signature <br>
-            <input id="time-sig-num" type="number" min="1" value="4"> <span> &#47;</span> <input id="time-sig-den" type="number" min="1" name="value" value="4">
-          </label>
-
-          <!--     Div 3    -->
-          <label class="custom-input">
-            Number of Bars
-            <input id="numOfBars" type="number" min="8" max="40" value="16"/>
-          </label>
-
-          <!--     Div 4    -->
-          <label class="custom-selector">
-            Valence
-            <select id="valence">
-              <option value="-2">-2</option>
-              <option value="-1">-1</option>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2" selected>2</option>
-            </select>
-          </label>
-
-          <!--     Div 5    -->
-          <label class="custom-selector">
-            Density
-            <select id="density">
-              <option value="low">Low</option>
-              <option value="med">Medium</option>
-              <option value="high" selected>High</option>
-            </select>
-          </label>
-
-          <!--     Div 6    -->
-          <label class="custom-selector">
-            Model
-            <select id="model">
-              <option value="lstm">LSTM</option>
-              <option value="transformer" selected>Transformer</option>
-            </select>
-          </label>
-
-        </form>
-      </div>
-
-      <!--      ADD THE GENERATE AND PLAY BTNS    -->
-      <div class="center-param">
-      <button onclick="save_param()" id="generate" class="btn"> Generate </button>
-      <button onclick="play_file()" id="play" class="btn"> Play </button>
-      </div>
-  </div>
 
 
-  <!--      OSMD CONTAINER    -->
-  <div class="row">
-    <div id="param_p"></div>
-    <h2 style="text-align: center"> Kylo Ren </h2>
-    <div id="osmdContainer" class="osmd"/>
-    <script src="https://unpkg.com/opensheetmusicdisplay@0.8.3/build/opensheetmusicdisplay.min.js"> </script>
-  </div>
- 
-<!--<div class="control-panel">
+    <div class="row">
 
-  <button id="start">
-    Start
-  </button>
+        <div class="col-sm-6" align="center">
 
-  <label>
-    BPM <input id = "bpm" type="range" min = "30" max="150" value="120">
-  </label>
+            <!--      Header    -->
+            <h2 style="text-align: center"> Input Parameters </h2>
 
-</div>
-<div id = 'sequencer'></div> -->
+            <!--      Input Div -->
+            <div class="input-param" align="center">
+                <form id="input-param-form">
 
-<!--  <button id="bass">-->
-<!--    Bass-->
-<!--  </button>-->
+                    <!--   Div 1  -->
+                    <label class="custom-input">
+                        Temperature
+                        <input id="temp" type="text" onkeypress="return isNumberKey(this, event);"
+                            placeholder=" Value less than 1 is desriable" />
+                    </label>
 
-  <script src="https://cdn.jsdelivr.net/npm/tone@14.7.39/build/Tone.min.js"></script>
-  <script src="js/vendor/modernizr-3.8.0.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>')</script>
-  <script src="js/plugins.js"></script>
-  <script src="js/main.js"></script>
-  <script type="module"
-    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js">
-  </script>
+                    <!--   Div 2    -->
+                    <label class="custom-input-2">
+                        Time Signature <br>
+                        <input id="time-sig-num" type="number" min="1" value="4"> <span> &#47;</span> <input
+                            id="time-sig-den" type="number" min="1" name="value" value="4">
+                    </label>
+
+                    <!--     Div 3    -->
+                    <label class="custom-input">
+                        Number of Bars
+                        <input id="numOfBars" type="number" min="8" max="40" value="16" />
+                    </label>
+
+                    <!--     Div 4    -->
+                    <label class="custom-selector">
+                        Valence
+                        <select id="valence">
+                            <option value="-2">-2</option>
+                            <option value="-1">-1</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2" selected>2</option>
+                        </select>
+                    </label>
+
+                    <!--     Div 5    -->
+                    <label class="custom-selector">
+                        Density
+                        <select id="density">
+                            <option value="low">Low</option>
+                            <option value="med">Medium</option>
+                            <option value="high" selected>High</option>
+                        </select>
+                    </label>
+
+                    <!--     Div 6    -->
+                    <label class="custom-selector">
+                        Model
+                        <select id="model">
+                            <option value="lstm">LSTM</option>
+                            <option value="transformer" selected>Transformer</option>
+                        </select>
+                    </label>
+
+                </form>
+            </div>
+
+            <!--      ADD THE GENERATE AND PLAY BTNS    -->
+            <div class="center-param">
+                <button onclick="save_param()" id="generate" class="btn"> Generate </button>
+                <button onclick="play_file()" id="play" class="btn"> Play </button>
+            </div>
+        </div>
+
+
+        <!--      OSMD CONTAINER    -->
+        <div class="row">
+            <div id="param_p"></div>
+            <h2 style="text-align: center"> Kylo Ren </h2>
+            <div id="osmdContainer" class="osmd" />
+            <script src="https://unpkg.com/opensheetmusicdisplay@0.8.3/build/opensheetmusicdisplay.min.js"> </script>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/tone@14.7.39/build/Tone.min.js"></script>
+    <script src="js/vendor/modernizr-3.8.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>')</script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+    <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js">
+    </script>
 
 
 
 
-  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-  <script>
-    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set','transport','beacon'); ga('send', 'pageview')
-  </script>
+
+    <script>
+        window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+        ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+    </script>
 
 
-  <script src="https://www.google-analytics.com/analytics.js" async></script>
+    <script src="https://www.google-analytics.com/analytics.js" async></script>
 
 
 
