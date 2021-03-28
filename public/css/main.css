@@ -262,7 +262,10 @@ textarea {
     text-align: center;
     page-break-after: avoid;
   }
-}
+
+
+
+
 .input-param{
   width: 540px;
   border: 1px solid #ddd;

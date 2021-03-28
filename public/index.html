@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html lang="">
 
 <head>
     <meta charset="utf-8">
@@ -12,20 +12,20 @@
     <link rel="apple-touch-icon" href="icon.png">
     <!-- Place favicon.ico in the root directory -->
 
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
+    <!-- <link rel="stylesheet" href="css/normalize.css"> -->
+    <!-- <link rel="stylesheet" href="css/main.css"> -->
+    <link rel="stylesheet" href="css/new_main.css">
+    <link rel="stylesheet" href="css/new.css">
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <!-- MDB -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css" rel="stylesheet" />
 
     <script src="https://cdn.jsdelivr.net/npm/tone@14.7.39/build/Tone.min.js"></script>
     <script src="./js/tonejs-instruments/Tonejs-Instruments.js"></script>
-    <!--  <script src ='https://cdn.jsdelivr.net/npm/nexusui@latest/dist/NexusUI.js'> </script>-->
-    <!--  <script src ='https://cdn.jsdelivr.net/npm/nexusui@latest/dist/NexusUI.min.js'> </script>-->
+
     <meta name="theme-color" content="#fafafa">
 
     <script type="text/javascript">
@@ -47,49 +47,41 @@
         }
     </script>
 
+    <script>
+        var isClicked_lstm = true;
+        var isClicked_transformer = false;
+        function highlight() {
+            isClicked_lstm = !isClicked_lstm;
+            isClicked_transformer = !isClicked_transformer
+
+            var lstm = document.getElementById('lstm');
+            lstm.className = (isClicked_lstm == false) ? "model-unselect" : "model-select";
+
+            var transformer = document.getElementById('transformer');
+            transformer.className = (isClicked_transformer == true) ? "model-select" : "model-unselect";
+        }
+
+        var pause = document.querySelector('.pause');
+        var play = document.querySelector('.play');
+        var btn = document.querySelector('#app');
+
+        btn.addEventListener('click', () => {
+            if (play.classList.contains("active")) {
+                play.classList.remove("active");
+                pause.classList.add("active");
+            }
+            else {
+                pause.classList.remove("active");
+                play.classList.add("active");
+            }
+        })
+
+    </script>
+
 
 </head>
 
 <body>
-
-    <style>
-        .control-panel {
-            border: 1px solid #ddd;
-            box-shadow: 1px 1px 1px 1px #eee;
-        }
-
-        form {
-            width: 300px;
-
-        }
-
-        h2 {
-            text-align: center;
-            letter-spacing: 0.05em;
-
-        }
-
-        *,
-        *::after,
-        *::before {
-            box-sizing: border-box;
-        }
-
-        /* <!--  .column {-->
-<!--  float: left;-->
-<!--  width: 50%;-->
-<!--  }--> */
-
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-
-        .btn {
-            background-color: #F79996;
-        }
-    </style>
     <!--[if IE]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
@@ -101,67 +93,115 @@
 
     <!--  Center Form-->
     <div class="hero-bg">
-        <section class="right">
-            <h1> AI MUSIC</h1>
-        </section>
+        <section class="panel">
+            <section class="left">
+                <h1>A<span>I </span>Music Generation</h1>
+            </section>
 
-        <section class="left">
+            <section class="right">
 
-            <div class="form-container">
+                <div class="form-container">
 
-                <form action="">
-                    <label for="temp " class="custom-input">Temperature </label>
-                    <input id="temp" type="text" onkeypress="return isNumberKey(this, event);"
-                        placeholder=" Value less than 1 is desriable" />
+                    <form action="">
+                        <div class="left-form">
+                            <label for="temp " class="custom-input">Temperature </label>
+                            <input id="temp" type="text" onkeypress="return isNumberKey(this, event);" value="1" />
+                            <br>
+                            <label for="time-sig-num" class="custom-input-2">Time Signature</label>
+                            <input id="time-sig-num" type="number" min="1" value="4"> <input id="time-sig-den"
+                                type="number" min="1" name="value" value="4">
 
-                    <!--   Div 2    -->
 
-                    <label for="time-sig-num" class="custom-input-2">Time Signature</label>
-                    <input id="time-sig-num" type="number" min="1" value="4"> <span> &#47;</span> <input
-                        id="time-sig-den" type="number" min="1" name="value" value="4">
-
-                    <!--     Div 3    -->
-
-                    <label for="numOfBars" class="custom-input"> Number of Bars</label>
-                    <input id="numOfBars" type="number" min="8" max="40" value="16" />
-
-                    <!--     Div 4    -->
-
-                    <label for="valence" class="custom-selector">Valence</label>
-                    <select id="valence">
-                        <option value="-2">-2</option>
-                        <option value="-1">-1</option>
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2" selected>2</option>
-                    </select>
-
-                    <!--     Div 5    -->
-
-                    <label for="density"class="custom-selector">Density</label>
-                    <select id="density">
-                        <option value="low">Low</option>
-                        <option value="med">Medium</option>
-                        <option value="high" selected>High</option>
-                    </select>
+                        </div>
 
 
 
-                    <label for="model" class="custom-selector">Model</label>
-                    <select id="model">
-                        <option value="lstm">LSTM</option>
-                        <option value="transformer" selected>Transformer</option>
-                    </select>
+                        <div class="right-form">
 
-                    <div class="center-param">
-                        <button onclick="save_param()" id="generate" class="btn"> Generate </button>
-                        <button onclick="play_file()" id="play" class="btn"> Play </button>
+                            <div class="right-1-form">
+
+                                <div class="col-right-1">
+                                    <label for="valence" class="custom-selector">Valence</label><br>
+                                    <select id="valence" class="val">
+                                        <option value="-2">-2</option>
+                                        <option value="-1">-1</option>
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2" selected>2</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-right-1">
+                                    <label for="numOfBars" class="custom-input"> Bars</label><br>
+                                    <input id="numOfBars" type="number" min="8" max="40" value="16" />
+
+                                </div>
+                            </div>
+
+
+                            <label for="density" class="custom-selector">Density</label>
+                            <select id="density" class="drop">
+                                <option value="low">Low</option>
+                                <option value="med">Medium</option>
+                                <option value="high" selected>High</option>
+                            </select>
+
+                            <!-- <label for="model" class="custom-selector">Model</label>
+                                    <select id="model" class="drop">
+                                        <option value="lstm">LSTM</option>
+                                        <option value="transformer" selected>Transformer</option>
+                                    </select> -->
+
+                        </div>
+
+
+                    </form>
+
+
+
+
+
+                    <div class="generate-btn">
+                        <button onclick="save_param()" id="generate" class="gen-btn"> Generate </button>
                     </div>
-                </form>
+
+                </div>
+
+                <div class="form-model">
+
+                    <!-- <select id="model" class="drop">
+                    <option value="lstm">LSTM</option>
+                    <option value="transformer" selected>Transformer</option>
+                </select> -->
+                    <!-- <span>Model</span> -->
+                    <div class="model-btn">
+                        <button id="lstm" class="model-select" onclick="highlight()"> LSTM </button> <br>
+                        <button id="transformer" class="model-unselect" onclick="highlight()"> Transformer </button>
+                    </div>
+                </div>
+            </section>
+
+        </section>
+        <div class="media-control">
+
+            <div class="down-btn">
+             
+            
+            </div>
+
+            <div class="play-btn">
+      
+
 
             </div>
 
-        </section>
+            <div class="stop-btn">
+                
+                </div>
+            </div>
+
+        </div>
+
     </div>
 
     <section class="sheet-music">
@@ -169,11 +209,10 @@
         <div id="osmdContainer" class="osmd" />
     </section>
 
-
     <script src="https://unpkg.com/opensheetmusicdisplay@0.8.3/build/opensheetmusicdisplay.min.js"> </script>
     <script src="https://cdn.jsdelivr.net/npm/tone@14.7.39/build/Tone.min.js"></script>
     <script src="js/vendor/modernizr-3.8.0.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    <script src="https://code.jquery.com/jquery.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>')</script>
     <script src="js/plugins.js"></script>

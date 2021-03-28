@@ -1,0 +1,342 @@
+/* My Fonts */
+/* -------------------------------------------------------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap'); /* Heading */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Sacramento&display=swap'); /* Form */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap'); /* Music Name*/
+/* -------------------------------------------------------------------------------------------------------------------- */
+
+body {
+
+    margin: 0;
+    background-color:wheat;
+    background-image: linear-gradient(to right, wheat 0%, #eeb26e 100%);
+}
+
+* {
+    box-sizing: border-box;
+    transition-property: all;
+    transition-duration: .6s;
+    transition-timing-function: ease;
+}
+
+h2 {
+    text-align: center;
+    letter-spacing: 0.05em;
+}
+
+h1 {
+    font-family: 'Sacramento', cursive;
+    font-size: 2.5rem;
+    color: wheat;
+    text-align: center;
+    margin: auto;
+
+}
+
+h1 span {
+    font-family: 'Montserrat', sans-serif;
+}
+.panel {
+    width: 400px;
+    margin: auto;
+    background:  #297CA4;
+}
+
+
+.left {
+    /* border: 5px solid red; */
+    width: 200px;
+    height: 120px;
+    margin: auto;
+    text-align: center;
+
+}
+.right{
+    /* border: 5px solid green; */
+    height: 250px;
+    display: flex;
+}
+
+.right button {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+}
+
+.form-container{
+    position: relative;
+    z-index: 1;
+    height: 250px;
+    background-color: #8abcd3;
+    margin: 1em 1em;
+    padding: 1em 1em;
+    border-radius: .5em;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, .3);
+}
+
+.form-row-1 {
+    display: flex;
+}
+form {
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    height: 180px;
+    width: 335px;
+}
+
+form input {
+
+    width: 60px;
+    margin: 0.3em 0 1em 0;
+    border: 1px solid #707070;
+    background-color: #8abcd3;
+    padding: 0.5em;
+    border-radius:0.5em;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+select {
+    text-align: center;
+}
+
+ .val {
+
+    width: 60px;
+    margin: 0.3em 0 1em 0;
+    background-color: #8abcd3;
+    border: 1px solid #707070;
+    padding: 0.5em;
+    border-radius:0.5em;
+    font-size: 1.1rem;
+    appearance: none;
+    cursor: pointer;
+}
+
+.drop {
+
+    width: 100px;
+    margin: 0.3em 0 1em 0;
+    background-color: #8abcd3;
+    border: 1px solid #707070;
+    padding: 0.5em;
+    border-radius:1em;
+    font-size: 1.1rem;
+    appearance: none;
+    cursor: pointer;
+
+}
+
+input[type="number"] {
+    -webkit-appearance: textfield;
+       -moz-appearance: textfield;
+            appearance: textfield;
+  }
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+  }
+
+
+.left-form{
+    text-align: center;
+    width: 150px;
+    margin: auto;
+}
+
+.right-1-form  {
+    text-align: center;
+    display: flex;
+}
+
+.col-right-1 {
+    margin: auto;
+}
+.right-form{
+    text-align: center;
+    width: 150px;
+    margin: auto;
+}
+
+.form-model{
+    text-align: center;
+}
+
+.model-btn {
+    position: relative;
+    top: 70px;
+    left: -16px;
+}
+
+.form-model button{
+
+    width: 90px;
+    padding: 1.5em 0 ;
+
+}
+
+.model-select{
+    position: relative;
+    background:  #8abcd3 ;
+    border:0px;
+    border-radius: 0 1em 1em 0;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, .3);
+    z-index: 1;
+}
+
+.clicked {
+
+    background:  black;
+}
+.model-unselect{
+
+    left: 10px;
+    z-index: -1;
+    border-radius: 0 1em 1em 0;
+    
+    background-color: #78a2b6;
+    
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, .4);
+    border:0px;
+}
+
+
+.generate-btn{
+    margin: auto;
+    text-align: center;
+    position: relative;
+    top: -10px;
+
+}
+
+.gen-btn {
+    background: #96c5db;
+    border: 1px solid #628a9c ;
+    box-shadow: 2px 4px 6px #719aad;
+
+    width: 90px;
+    padding: 1em 0 ;
+    border-radius: 1em;
+    border: 0px;
+    font-size: 1rem;
+    transition: all 150ms linear;
+
+
+}
+
+.gen-btn:hover {
+    background: #78a2b6;
+    border: 1px solid rgba(#000, .05);
+    box-shadow: 10px 10px 5px rgba(0,0,0,0.2) inset;
+    text-decoration: none;
+    transition: all 200ms linear;
+  }
+
+.media-control {
+    margin: auto;
+    height: 100px;
+    width: 230px;
+    text-align: center;
+    padding: 1.5em 0;
+    display: flex;
+
+}
+
+.play-btn{
+    margin: auto;
+	width: 50px;
+	height: 50px;
+	background-image: linear-gradient(-20deg, #ddd6f3 0%, wheat 100%, #eeb26e 100%);
+	border-radius: 50%;
+    border: 0px;
+	box-shadow: 2px 2px 5px rgba(0,0,0,0.15), 2px 2px 10px rgba(0,0,0,0.1);
+    /* box-shadow: 5px 5px 5px rgba(0,0,0,0.3); */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.stop-btn, .down-btn{
+    margin: auto;
+	width: 40px;
+	height: 40px;
+	background-image: linear-gradient(-20deg, #ddd6f3 0%, wheat 100%, #eeb26e 100%);
+	border-radius: 50%;
+    border: 0px;
+	box-shadow: 2px 2px 5px rgba(0,0,0,0.15), 2px 2px 10px rgba(0,0,0,0.1);
+    /* box-shadow: 5px 5px 5px rgba(0,0,0,0.3); */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.stop-btn::after{
+    content: '';
+    background: #927b62;
+    width: 0.7em;
+    height: 0.7em;
+}
+
+.play-btn::after{
+    content: '';
+    position: relative;
+    left: 2px;
+    width: 0;
+    height: 0;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 17px solid #927b62;
+    clear: both;
+}
+
+.play-btn:hover, .stop-btn:hover, .down-btn:hover  {
+    background: #eeb26e;
+    border: 1px solid rgba(#000, .05);
+    box-shadow: 10px 10px 5px rgba(0,0,0,0.2) inset;
+    text-decoration: none;
+    transition: all 200ms linear;
+  }
+
+.pla-btn:active{
+
+    background: #eeb26e;
+    border: 1px solid rgba(#000, .05);
+    box-shadow: 10px 10px 5px rgba(0,0,0,0.2) inset;
+    text-decoration: none;
+    transition: all 200ms linear;
+}
+
+@media (min-width: 786px){
+
+
+    .panel{
+        display: flex;
+        width: 700px;
+    }
+
+    .right{
+
+        position: relative;
+        right: -4em;
+    }
+
+    .left {
+        position: relative;
+        right: -2em;
+        width: 300px;
+
+    }
+    
+    
+}
+
+.sheet-music h2 {
+    font-family: 'Orbitron', sans-serif;
+    background: -webkit-linear-gradient(#333, #886540);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+
+
+
