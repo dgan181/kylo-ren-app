@@ -183,6 +183,17 @@ input[type="number"] {
     z-index: 1;
 }
 
+.model-select:hover{
+
+    position: relative;
+    background-image: linear-gradient(to right, #8abcd3 0%, #7facbe 100%);
+    border:0px;
+    border-radius: 0 1em 1em 0;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, .3);
+    z-index: 1;
+
+}
+
 .clicked {
 
     background:  black;
@@ -224,9 +235,9 @@ input[type="number"] {
 }
 
 .gen-btn:hover {
-    background: #78a2b6;
+    background: #82b0c2;
     border: 1px solid rgba(#000, .05);
-    box-shadow: 10px 10px 5px rgba(0,0,0,0.2) inset;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.2) inset;
     text-decoration: none;
     transition: all 200ms linear;
   }
@@ -290,9 +301,9 @@ input[type="number"] {
 }
 
 .play-btn:hover, .stop-btn:hover, .down-btn:hover  {
-    background: #eeb26e;
+    background: #eebe86;
     border: 1px solid rgba(#000, .05);
-    box-shadow: 10px 10px 5px rgba(0,0,0,0.2) inset;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.2) inset;
     text-decoration: none;
     transition: all 200ms linear;
   }
