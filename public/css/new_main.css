@@ -233,6 +233,7 @@ input[type="number"] {
 
 .media-control {
     margin: auto;
+    margin-top: 10px;
     height: 100px;
     width: 230px;
     text-align: center;
