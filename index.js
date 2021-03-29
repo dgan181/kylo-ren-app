@@ -77,7 +77,7 @@ app.post('/api', (request,response) => {
 app.get('/api', (request,response) => {
 
   console.log("I got the play request!")
-  
+//  const midiData = fs.readFileSync("./Backend/seq2seq_test/generations/13_[4, 4]_fybso.mid")
   const midiData = fs.readFileSync(__model_dirname+"/midi/music.mid")
   const midi = new Midi(midiData)
   response.json(midi)
@@ -94,6 +94,7 @@ app.get('/sheet', (request,response) => {
   console.log("Sending sheet music")
   response.set('Content-Type', 'text/xml');
   const xmlData = fs.readFileSync(__model_dirname+"/musicxml/sheet.xml")
+//  const xmlData = fs.readFileSync("")
   response.send(xmlData)
 });
 
