@@ -93,10 +93,12 @@ form input {
     border-radius:0.5em;
     font-size: 1.1rem;
     text-align: center;
+    font-family: 'Montserrat', sans-serif;
 }
 
 select {
     text-align: center;
+    font-family: 'Montserrat', sans-serif;
 }
 
  .val {
@@ -242,6 +244,48 @@ input[type="number"] {
     transition: all 200ms linear;
   }
 
+.gen-btn-press {
+    background: #8abcd3;
+    border: 1px solid #707070;
+    
+    width: 90px;
+    height: 41.6px;
+    border-radius: 1em;
+    font-size: 1rem;
+    transition: all 150ms linear;
+}
+
+@keyframes pulse {
+    from {
+      opacity: 1;
+      transform: scale(1);
+    }
+    to {
+      opacity: .25;
+      transform: scale(.75);
+    }
+  }
+
+.pulse-bubble {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #707070 ;
+    margin: 0em 0.3em;
+    display: inline-block;
+    
+  }
+  
+.pulse-bubble-1 {
+    animation: pulse .4s ease 0s infinite alternate;
+}
+.pulse-bubble-2 {
+    animation: pulse .4s ease .2s infinite alternate;
+}
+.pulse-bubble-3 {
+    animation: pulse .4s ease .4s infinite alternate;
+}
+
 .media-control {
     margin: auto;
     margin-top: 10px;
@@ -308,7 +352,7 @@ input[type="number"] {
     transition: all 200ms linear;
   }
 
-.pla-btn:active{
+.play-btn:active{
 
     background: #eeb26e;
     border: 1px solid rgba(#000, .05);
@@ -316,6 +360,44 @@ input[type="number"] {
     text-decoration: none;
     transition: all 200ms linear;
 }
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
 
 @media (min-width: 786px){
 

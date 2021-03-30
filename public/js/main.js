@@ -169,7 +169,7 @@ var isClicked = true;
 function highlight() {
     var lstm = document.getElementById('lstm');
     var transformer = document.getElementById('transformer');
-    if (isClicked == true){
+    if (isClicked == true) {
         lstm.className = "model-unselect"
         transformer.className = "model-select"
     }
@@ -178,14 +178,18 @@ function highlight() {
         transformer.className = "model-unselect"
     }
 
-    isClicked= !isClicked
+    isClicked = !isClicked
 
 }
 
 async function save_param() {
 
     //Add a span class for the spinner object
-    document.getElementById('generate').innerHTML += "<span id='generateSpinner' class='spinner-border spinner-border-sm'   role='status' aria-hidden='true'  ></span>"
+    // document.getElementById('generate').innerHTML += "<span id='generateSpinner' class='spinner-border spinner-border-sm model-select'   role='status' aria-hidden='true'  ></span>"
+    document.getElementById('generate').className = "gen-btn-press"
+    document.getElementById('generate').innerHTML = " <div class='pulse-bubble pulse-bubble-1' ></div> "+
+    "<div class='pulse-bubble pulse-bubble-2'></div>" +
+    "<div class='pulse-bubble pulse-bubble-3'></div>"
 
     var temp = document.getElementById('temp').value;
     var timsig_n = document.getElementById('time-sig-num').value;
@@ -193,8 +197,15 @@ async function save_param() {
     var numOfBars = document.getElementById('numOfBars').value;
     var valence = document.getElementById('valence').value;
     var density = document.getElementById('density').value;
-    
-    var model = (isClicked == true) ? 'lstm': 'transformer';
+    var model = (isClicked == true) ? 'lstm' : 'transformer';
+
+    var x = 1;
+    var y = null; // To keep under proper scope
+
+    setTimeout(function () {
+        x = x * 3 + 2;
+        y = x / 2;
+    }, 3000);
 
     var par = {
         temp: temp,
@@ -218,9 +229,9 @@ async function save_param() {
     var data = await response.json();
     console.log(data.message)
 
-    // Remove the spinner object as the function ends
-    var spinner = document.getElementById('generateSpinner')
-    spinner.remove()
+
+    document.getElementById('generate').className = "gen-btn"
+    document.getElementById('generate').innerHTML = "Generate"
     if (data.code) {
         var osmd = document.getElementById('osmdContainer');
         osmd.innerHTML = '<h3> Something has gone wrong somewhere </h3>'
@@ -229,13 +240,6 @@ async function save_param() {
         display_sheet_music()
     }
 
-    //  var param_p = document.getElementById('param_p');
-    //  param_p.innerHTML = '<p> <h3> File generating... </h3h></p>'
-    //  param_p.innerHTML = '<p> <h3>' + data + '</h3h></p>' +
-    //                     '<p> The following parameters were sent: </p>'
-    //
-    //  window.localStorage.setItem('param',JSON.stringify(par));
-    //  fetch_param();
 }
 
 function display_sheet_music() {
@@ -284,30 +288,30 @@ function fetch_param() {
 
 async function play_file() {
     //Add a span class for the spinner object
-    document.getElementById('play').innerHTML += "<span id ='playSpinner' class='spinner-border spinner-border-sm'   role='status' aria-hidden='true'  ></span>"
+    //document.getElementById('play').innerHTML += "<span id ='playSpinner' class='spinner-border spinner-border-sm'   role='status' aria-hidden='true'  ></span>"
 
     //Fetch musicJSON
     var response = await fetch('/api');
     var data = await response.json();
-    var instrument_names = []
+    // var instrument_names = []
 
     //  Checking the orignal instrument names
-    data.tracks.forEach((track) => {
-        instrument_names.push(track.name)
-    })
-    console.log(instrument_names)
+    // data.tracks.forEach((track) => {
+    //     instrument_names.push(track.name)
+    // })
+    // console.log(instrument_names)
 
 
     //  Change the instruments from bass-electric/bassoon/cello/clarinet/contrabass/flute/french-horn/guitar-acoustic
     //guitar-electric/guitar-nylon/harmonium/harp/organ/piano/saxophone/trombone/trumpet/tuba/violin/xylophone/
-    data.tracks[0].name = "bass-electric"
-    data.tracks[1].name = "harp"
+    // data.tracks[0].name = "bass-electric"
+    // data.tracks[1].name = "harp"
 
     //  Checking the New instrument names
-    data.tracks.forEach((track) => {
-        instrument_names.push(track.name)
-    })
-    console.log(instrument_names)
+    // data.tracks.forEach((track) => {
+    //     instrument_names.push(track.name)
+    // })
+    // console.log(instrument_names)
 
     //  var param_p = document.getElementById('param_p');
     //  param_p.innerHTML = '<p>' + 'playing file...' + '</p>'
@@ -346,8 +350,34 @@ async function play_file() {
     }
 
     // Remove the spinner object as the function ends
-    var spinner = document.getElementById('playSpinner')
-    spinner.remove()
+    // var spinner = document.getElementById('playSpinner')
+    // spinner.remove()
 
 
+}
+
+// Get the modal
+var modal = document.getElementById("info");
+
+// Get the button that opens the modal
+var btn = document.getElementById("info-btn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 }

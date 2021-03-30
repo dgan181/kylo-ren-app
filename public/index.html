@@ -15,7 +15,6 @@
     <!-- <link rel="stylesheet" href="css/normalize.css"> -->
     <!-- <link rel="stylesheet" href="css/main.css"> -->
     <link rel="stylesheet" href="css/new_main.css">
-    <link rel="stylesheet" href="css/new.css">
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
@@ -63,7 +62,7 @@
     <div class="hero-bg">
         <section class="panel">
             <section class="left">
-                <h1>A<span>I </span>Music Generation</h1>
+                <h1><span></span>Music Generation</h1>
             </section>
 
             <section class="right">
@@ -94,8 +93,8 @@
                                         <option value="-2">-2</option>
                                         <option value="-1">-1</option>
                                         <option value="0">0</option>
-                                        <option value="1">1</option>
-                                        <option value="2" selected>2</option>
+                                        <option value="1" selected>1</option>
+                                        <option value="2">2</option>
                                     </select>
                                 </div>
 
@@ -109,9 +108,9 @@
 
                             <label for="density" class="custom-selector">Density</label>
                             <select id="density" class="drop">
-                                <option value="low">Low</option>
+                                <option value="low" selected>Low</option>
                                 <option value="med">Medium</option>
-                                <option value="high" selected>High</option>
+                                <option value="high">High</option>
                             </select>
 
                             <!-- <label for="model" class="custom-selector">Model</label>
@@ -147,42 +146,50 @@
                         <button id="transformer" class="model-unselect" onclick="highlight()"> Transformer </button>
                     </div>
                 </div>
-                
+
             </section>
 
         </section>
         <div class="media-control">
 
-            <div class="down-btn">
-             
-            
+            <div id="info-btn" class="down-btn">
+
+
             </div>
 
-            <div class="play-btn">
-      
-
+            <div class="play-btn" onclick="play_file()">
 
             </div>
 
             <div class="stop-btn">
-                
-                </div>
-            </div>
 
+            </div>
         </div>
 
     </div>
 
+    </div>
+
     <section class="sheet-music">
-        <h2 style="text-align: center"> Kylo Ren </h2>
         <div id="osmdContainer" class="osmd" />
     </section>
+
+    <div id="info" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Some text in the Modal..</p>
+        </div>
+
+    </div>
+
 
     <script src="https://unpkg.com/opensheetmusicdisplay@0.8.3/build/opensheetmusicdisplay.min.js"> </script>
     <script src="https://cdn.jsdelivr.net/npm/tone@14.7.39/build/Tone.min.js"></script>
     <script src="js/vendor/modernizr-3.8.0.min.js"></script>
-    <script src="https://code.jquery.com/jquery.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>')</script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
