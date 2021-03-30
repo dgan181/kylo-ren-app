@@ -1,9 +1,9 @@
- // Instruments
- //
+// Instruments
+//
 
 //const { ToneEvent } = require("tone");
 
- // Instrument 1
+// Instrument 1
 //  let drumPlayers = new Tone.Players({
 //   kick : 'https://teropa.info/ext-assets/drumkit/kick.mp3',
 //   hatClosed : 'https://teropa.info/ext-assets/drumkit/hatClosed.mp3',
@@ -16,8 +16,8 @@
 //   crash : 'https://teropa.info/ext-assets/drumkit/hatOpen.mp3'
 // }).toDestination()
 
- //
- // Instrument 2
+//
+// Instrument 2
 
 // let bass = new Tone.Synth({
 //   oscillator:{type:'sawtooth'},
@@ -111,8 +111,8 @@
 //   leadPart.loopEnd ='2m';
 
 
-  //
-  // Interaction
+//
+// Interaction
 //let playing = false
 /*document.getElementById("start").onclick = async () => {
   if (playing) {
@@ -165,94 +165,113 @@ sequencer.on('change', ({column, row, state})=> {
 // Sends post request to server: model parameters
 //---------------------------------------------------------------------------------------------------------------
 
-async function save_param(){
+var isClicked = true;
+function highlight() {
+    var lstm = document.getElementById('lstm');
+    var transformer = document.getElementById('transformer');
+    if (isClicked == true){
+        lstm.className = "model-unselect"
+        transformer.className = "model-select"
+    }
+    else {
+        lstm.className = "model-select"
+        transformer.className = "model-unselect"
+    }
 
-  //Add a span class for the spinner object
-  document.getElementById('generate').innerHTML += "<span id='generateSpinner' class='spinner-border spinner-border-sm'   role='status' aria-hidden='true'  ></span>"
+    isClicked= !isClicked
 
-  var temp = document.getElementById('temp').value;
-  var timsig_n = document.getElementById('time-sig-num').value;
-  var timsig_d = document.getElementById('time-sig-den').value;
-  var numOfBars = document.getElementById('numOfBars').value;
-  var valence = document.getElementById('valence').value;
-  var density = document.getElementById('density').value;
-  var model = document.getElementById('model').value;
+}
 
-  var par = {
-    temp: temp,
-    timsig_n: timsig_n,
-    timsig_d: timsig_d,
-    numOfBars: numOfBars,
-    valence: valence,
-    density: density,
-    model: model,
-  }
+async function save_param() {
 
-  var options = {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(par)
-  };
+    //Add a span class for the spinner object
+    document.getElementById('generate').innerHTML += "<span id='generateSpinner' class='spinner-border spinner-border-sm'   role='status' aria-hidden='true'  ></span>"
 
-  var response = await fetch('/api', options);
-  var data = await response.json();
-  console.log(data.message)
+    var temp = document.getElementById('temp').value;
+    var timsig_n = document.getElementById('time-sig-num').value;
+    var timsig_d = document.getElementById('time-sig-den').value;
+    var numOfBars = document.getElementById('numOfBars').value;
+    var valence = document.getElementById('valence').value;
+    var density = document.getElementById('density').value;
+    
+    var model = (isClicked == true) ? 'lstm': 'transformer';
 
-  // Remove the spinner object as the function ends
-  var spinner = document.getElementById('generateSpinner')
-  spinner.remove()
-  if (data.code) {
-    var osmd = document.getElementById('osmdContainer');
-    osmd.innerHTML = '<h3> Something has gone wrong somewhere </h3>'
-  }
-  else{
-    display_sheet_music()
-  }
-  
-//  var param_p = document.getElementById('param_p');
-//  param_p.innerHTML = '<p> <h3> File generating... </h3h></p>'
-//  param_p.innerHTML = '<p> <h3>' + data + '</h3h></p>' +
-//                     '<p> The following parameters were sent: </p>'
-//
-//  window.localStorage.setItem('param',JSON.stringify(par));
-//  fetch_param();
+    var par = {
+        temp: temp,
+        timsig_n: timsig_n,
+        timsig_d: timsig_d,
+        numOfBars: numOfBars,
+        valence: valence,
+        density: density,
+        model: model,
+    }
+
+    var options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(par)
+    };
+
+    var response = await fetch('/api', options);
+    var data = await response.json();
+    console.log(data.message)
+
+    // Remove the spinner object as the function ends
+    var spinner = document.getElementById('generateSpinner')
+    spinner.remove()
+    if (data.code) {
+        var osmd = document.getElementById('osmdContainer');
+        osmd.innerHTML = '<h3> Something has gone wrong somewhere </h3>'
+    }
+    else {
+        display_sheet_music()
+    }
+
+    //  var param_p = document.getElementById('param_p');
+    //  param_p.innerHTML = '<p> <h3> File generating... </h3h></p>'
+    //  param_p.innerHTML = '<p> <h3>' + data + '</h3h></p>' +
+    //                     '<p> The following parameters were sent: </p>'
+    //
+    //  window.localStorage.setItem('param',JSON.stringify(par));
+    //  fetch_param();
 }
 
 function display_sheet_music() {
 
-     // Fetch musicXML Container
-  var osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdContainer");
+    // Fetch musicXML Container
+    var osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdContainer");
 
-  osmd.setOptions({
-    backend: "svg",
-    drawTitle: false,
-    drawComposer: false,
-    drawPartNames: true,
-    renderSingleHorizontalStaffline: false
+    osmd.setOptions({
+        backend: "svg",
+        drawTitle: false,
+        drawComposer: false,
+        drawPartNames: true,
+        renderSingleHorizontalStaffline: false
     });
 
-  osmd
-    .load("http://localhost:3000/sheet")
-    .then(
-      function() {
-        window.osmd = osmd; //give access to osmd object in Browser console, e.g. for osmd.setOptions()
-        osmd.render();});
-  
+    osmd
+        .load("http://localhost:3000/sheet")
+        .then(
+            function () {
+                window.osmd = osmd; //give access to osmd object in Browser console, e.g. for osmd.setOptions()
+                osmd.render();
+            });
+
 }
 
-function fetch_param(){
-  var param = JSON.parse(window.localStorage.getItem('param'));
-  var param_p = document.getElementById('param_p');
+function fetch_param() {
+    var param = JSON.parse(window.localStorage.getItem('param'));
+    var param_p = document.getElementById('param_p');
 
-  param_p.innerHTML += '<p> Temp: ' + param.temp + '</p>' +
-                      '<p> Time Signature: ' + param.timsig_n + '<span> &#47;</span> ' + param.timsig_d + '</p>' +
-                      '<p> Number of Bars: ' + param.numOfBars + '</p>' +
-                      '<p> Valence: ' + param.valence + '</p>' +
-                      '<p> Density: ' + param.density + '</p>' +
-                      '<p> Model: ' + param.model + '</p>'
-  }
+    param_p.innerHTML += '<p> Temp: ' + param.temp + '</p>' +
+        '<p> Time Signature: ' + param.timsig_n + '<span> &#47;</span> ' + param.timsig_d + '</p>' +
+        '<p> Number of Bars: ' + param.numOfBars + '</p>' +
+        '<p> Valence: ' + param.valence + '</p>' +
+        '<p> Density: ' + param.density + '</p>' +
+        '<p> Model: ' + param.model + '</p>'
+}
 
 
 //---------------------------------------------------------------------------------------------------------------
@@ -263,60 +282,60 @@ function fetch_param(){
 // and upload
 //---------------------------------------------------------------------------------------------------------------
 
-async function play_file(){
-  //Add a span class for the spinner object
-  document.getElementById('play').innerHTML += "<span id ='playSpinner' class='spinner-border spinner-border-sm'   role='status' aria-hidden='true'  ></span>"
+async function play_file() {
+    //Add a span class for the spinner object
+    document.getElementById('play').innerHTML += "<span id ='playSpinner' class='spinner-border spinner-border-sm'   role='status' aria-hidden='true'  ></span>"
 
-  //Fetch musicJSON
-  var response = await fetch('/api');
-  var data = await response.json();
-  var instrument_names = []
+    //Fetch musicJSON
+    var response = await fetch('/api');
+    var data = await response.json();
+    var instrument_names = []
 
-//  Checking the orignal instrument names
-  data.tracks.forEach((track) => {
-    instrument_names.push(track.name)
-  })
-  console.log(instrument_names)
+    //  Checking the orignal instrument names
+    data.tracks.forEach((track) => {
+        instrument_names.push(track.name)
+    })
+    console.log(instrument_names)
 
 
-  //  Change the instruments from bass-electric/bassoon/cello/clarinet/contrabass/flute/french-horn/guitar-acoustic
-  //guitar-electric/guitar-nylon/harmonium/harp/organ/piano/saxophone/trombone/trumpet/tuba/violin/xylophone/
-  data.tracks[0].name = "bass-electric"
-  data.tracks[1].name = "harp"
+    //  Change the instruments from bass-electric/bassoon/cello/clarinet/contrabass/flute/french-horn/guitar-acoustic
+    //guitar-electric/guitar-nylon/harmonium/harp/organ/piano/saxophone/trombone/trumpet/tuba/violin/xylophone/
+    data.tracks[0].name = "bass-electric"
+    data.tracks[1].name = "harp"
 
-  //  Checking the New instrument names
-  data.tracks.forEach((track) => {
-    instrument_names.push(track.name)
-  })
-  console.log(instrument_names)
+    //  Checking the New instrument names
+    data.tracks.forEach((track) => {
+        instrument_names.push(track.name)
+    })
+    console.log(instrument_names)
 
-//  var param_p = document.getElementById('param_p');
-//  param_p.innerHTML = '<p>' + 'playing file...' + '</p>'
+    //  var param_p = document.getElementById('param_p');
+    //  param_p.innerHTML = '<p>' + 'playing file...' + '</p>'
 
-  // Play musicJSON with tone
-  var instruments = [];
+    // Play musicJSON with tone
+    var instruments = [];
     if (data) {
         const now = Tone.now() + 0.5;
         data.tracks.forEach((track) => {
             //get instrument from sample library -- courtsey of  nbrosowsky/tonejs-instruments 
             var instrument = SampleLibrary.load({
-              instruments: track.name.toLowerCase(),
-              baseUrl: "http://localhost:8080/",
-              ext: ".[wav|mp3|ogg]"
-              });
+                instruments: track.name.toLowerCase(),
+                baseUrl: "http://localhost:8080/",
+                ext: ".[wav|mp3|ogg]"
+            });
             instrument.toDestination()
             instruments.push(instrument)
             //schedule all of the events
             track.notes.forEach((note) => {
                 // play instrument sound
-                Tone.loaded().then( ()=> instrument.triggerAttackRelease(
-                  note.name,
-                  note.duration,
-                  note.time + now,
-                  note.velocity) 
+                Tone.loaded().then(() => instrument.triggerAttackRelease(
+                    note.name,
+                    note.duration,
+                    note.time + now,
+                    note.velocity)
                 )
             });
-                
+
         });
     } else {
         //dispose the instrument and make a new one
@@ -331,4 +350,4 @@ async function play_file(){
     spinner.remove()
 
 
-  }
+}
