@@ -288,7 +288,7 @@ input[type="number"] {
 
 .media-control {
     margin: auto;
-    margin-top: 10px;
+    margin-top: 40px;
     height: 100px;
     width: 230px;
     text-align: center;
@@ -421,7 +421,7 @@ input[type="number"] {
 @media (min-width: 786px){
 
 
-    .panel{
+    /* .panel{
         display: flex;
         width: 700px;
     }
@@ -437,19 +437,66 @@ input[type="number"] {
         right: -2em;
         width: 300px;
 
+    } */
+
+    .cont {
+      display:flex; 
     }
     
+
+    .sheet-music{
+        width: 700px;
+        height: 700px;
+        margin: auto;
+        margin-top: 2em;
+    }
+
+    .hero-bg{ 
+        
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-bottom: 2em;
+        height: 2000px;
+        margin-left: 1.5em;
+        background:  #297CA4;
+    }
+
+    .panel {
+        margin-top: 0em;
+        padding-top: 5em;
+    }
+
+    .play-btn, .stop-btn, .down-btn, .play-btn-press {
+
+        background-image: linear-gradient(-20deg, #95a3b1 0%, #8abcd3 100%, #181e20 100%);
+        color: #616060;
     
+    }
+
+    .play-btn::after {
+        border-left: 17px solid #616060;
+    }
+
+    .stop-btn::after, .rect {
+
+        background: #616060;
+
+    }
+
+    .play-btn:hover, .stop-btn:hover, .down-btn:hover  {
+        background: #2076a1;
+        border: 1px solid rgba(#000, .05);
+        box-shadow: 5px 5px 5px rgba(0,0,0,0.2) inset;
+        text-decoration: none;
+        transition: all 200ms linear;
+    }
+
+
+    .sheet-music h2 {
+        font-family: 'Orbitron', sans-serif;
+        background: -webkit-linear-gradient(#333, #886540);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
 }
-
-.sheet-music h2 {
-    font-family: 'Orbitron', sans-serif;
-    background: -webkit-linear-gradient(#333, #886540);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-
-
-
-

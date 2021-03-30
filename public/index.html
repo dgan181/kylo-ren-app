@@ -59,134 +59,126 @@
 
 
     <!--  Center Form-->
-    <div class="hero-bg">
-        <section class="panel">
-            <section class="left">
-                <h1><span></span>Music Generation</h1>
-            </section>
+    <div class="cont">
+        <div class="hero-bg">
+            <section class="panel">
+                <section class="left">
+                    <h1><span></span>Music Generation</h1>
+                </section>
 
-            <section class="right">
+                <section class="right">
 
-                <div class="form-container">
+                    <div class="form-container">
 
-                    <form action="">
-                        <div class="left-form">
-                            <label for="temp " class="custom-input">Temperature </label>
-                            <input id="temp" type="text" onkeypress="return isNumberKey(this, event);" value="1" />
-                            <br>
-                            <label for="time-sig-num" class="custom-input-2">Time Signature</label>
-                            <input id="time-sig-num" type="number" min="1" value="4"> <input id="time-sig-den"
-                                type="number" min="1" name="value" value="4">
-
-
-                        </div>
+                        <form action="">
+                            <div class="left-form">
+                                <label for="temp " class="custom-input">Temperature </label>
+                                <input id="temp" type="text" onkeypress="return isNumberKey(this, event);" value="1" />
+                                <br>
+                                <label for="time-sig-num" class="custom-input-2">Time Signature</label>
+                                <input id="time-sig-num" type="number" min="1" value="4"> <input id="time-sig-den"
+                                    type="number" min="1" name="value" value="4">
 
 
-
-                        <div class="right-form">
-
-                            <div class="right-1-form">
-
-                                <div class="col-right-1">
-                                    <label for="valence" class="custom-selector">Valence</label><br>
-                                    <select id="valence" class="val">
-                                        <option value="-2">-2</option>
-                                        <option value="-1">-1</option>
-                                        <option value="0">0</option>
-                                        <option value="1" selected>1</option>
-                                        <option value="2">2</option>
-                                    </select>
-                                </div>
-
-                                <div class="col-right-1">
-                                    <label for="numOfBars" class="custom-input"> Bars</label><br>
-                                    <input id="numOfBars" type="number" min="8" max="40" value="16" />
-
-                                </div>
                             </div>
 
 
-                            <label for="density" class="custom-selector">Density</label>
-                            <select id="density" class="drop">
-                                <option value="low" selected>Low</option>
-                                <option value="med">Medium</option>
-                                <option value="high">High</option>
-                            </select>
 
-                            <!-- <label for="model" class="custom-selector">Model</label>
+                            <div class="right-form">
+
+                                <div class="right-1-form">
+
+                                    <div class="col-right-1">
+                                        <label for="valence" class="custom-selector">Valence</label><br>
+                                        <select id="valence" class="val">
+                                            <option value="-2">-2</option>
+                                            <option value="-1">-1</option>
+                                            <option value="0">0</option>
+                                            <option value="1" selected>1</option>
+                                            <option value="2">2</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-right-1">
+                                        <label for="numOfBars" class="custom-input"> Bars</label><br>
+                                        <input id="numOfBars" type="number" min="8" max="40" value="16" />
+
+                                    </div>
+                                </div>
+
+
+                                <label for="density" class="custom-selector">Density</label>
+                                <select id="density" class="drop">
+                                    <option value="low" selected>Low</option>
+                                    <option value="med">Medium</option>
+                                    <option value="high">High</option>
+                                </select>
+
+                                <!-- <label for="model" class="custom-selector">Model</label>
                                     <select id="model" class="drop">
                                         <option value="lstm">LSTM</option>
                                         <option value="transformer" selected>Transformer</option>
                                     </select> -->
 
+                            </div>
+
+
+                        </form>
+
+
+
+
+
+                        <div class="generate-btn">
+                            <button onclick="save_param()" id="generate" class="gen-btn"> Generate </button>
                         </div>
 
-
-                    </form>
-
-
-
-
-
-                    <div class="generate-btn">
-                        <button onclick="save_param()" id="generate" class="gen-btn"> Generate </button>
                     </div>
 
-                </div>
-
-                <div class="form-model">
-
-                    <!-- <select id="model" class="drop">
-                    <option value="lstm">LSTM</option>
-                    <option value="transformer" selected>Transformer</option>
-                </select> -->
-                    <!-- <span>Model</span> -->
-                    <div class="model-btn">
-                        <button id="lstm" class="model-select" onclick="highlight()"> LSTM </button> <br>
-                        <button id="transformer" class="model-unselect" onclick="highlight()"> Transformer </button>
+                    <div class="form-model">
+                        <div class="model-btn">
+                            <button id="lstm" class="model-select" onclick="highlight()"> LSTM </button> <br>
+                            <button id="transformer" class="model-unselect" onclick="highlight()"> Transformer </button>
+                        </div>
                     </div>
-                </div>
+
+                </section>
 
             </section>
+            <div class="media-control">
 
+                <div id="info-btn" class="down-btn">
+                    i
+                </div>
+
+                <div id="play" class="play-btn" onclick="play_file()">
+
+                    <div id="pause-left" class='rect'></div>
+
+                    <div id="pause-right" class='rect'></div>
+
+                </div>
+
+                <div class="stop-btn"></div>
+
+            </div>
+
+        </div>
+
+        <section class="sheet-music">
+            <div id="osmdContainer" class="osmd" />
         </section>
-        <div class="media-control">
 
-            <div id="info-btn" class="down-btn">
-                i
+        <div id="info" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p> Info about the application goes here....</p>
             </div>
 
-            <div id="play" class="play-btn" onclick="play_file()">
-
-                <div id="pause-left" class='rect' ></div>
-
-                <div id="pause-right" class='rect'></div>
-
-            </div>
-
-            <div class="stop-btn">
-
-            </div>
         </div>
-
     </div>
-
-    </div>
-
-    <section class="sheet-music">
-        <div id="osmdContainer" class="osmd" />
-    </section>
-
-    <div id="info" class="modal">
-
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <p> Info about the application goes here....</p>
-        </div>
-
-    </div>
-
 
     <script src="https://unpkg.com/opensheetmusicdisplay@0.8.3/build/opensheetmusicdisplay.min.js"> </script>
     <script src="https://cdn.jsdelivr.net/npm/tone@14.7.39/build/Tone.min.js"></script>
