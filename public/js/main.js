@@ -187,9 +187,9 @@ async function save_param() {
     //Add a span class for the spinner object
     // document.getElementById('generate').innerHTML += "<span id='generateSpinner' class='spinner-border spinner-border-sm model-select'   role='status' aria-hidden='true'  ></span>"
     document.getElementById('generate').className = "gen-btn-press"
-    document.getElementById('generate').innerHTML = " <div class='pulse-bubble pulse-bubble-1' ></div> "+
-    "<div class='pulse-bubble pulse-bubble-2'></div>" +
-    "<div class='pulse-bubble pulse-bubble-3'></div>"
+    document.getElementById('generate').innerHTML = " <div class='pulse-bubble pulse-bubble-1' ></div> " +
+        "<div class='pulse-bubble pulse-bubble-2'></div>" +
+        "<div class='pulse-bubble pulse-bubble-3'></div>"
 
     var temp = document.getElementById('temp').value;
     var timsig_n = document.getElementById('time-sig-num').value;
@@ -198,14 +198,6 @@ async function save_param() {
     var valence = document.getElementById('valence').value;
     var density = document.getElementById('density').value;
     var model = (isClicked == true) ? 'lstm' : 'transformer';
-
-    var x = 1;
-    var y = null; // To keep under proper scope
-
-    setTimeout(function () {
-        x = x * 3 + 2;
-        y = x / 2;
-    }, 3000);
 
     var par = {
         temp: temp,
@@ -265,18 +257,6 @@ function display_sheet_music() {
 
 }
 
-function fetch_param() {
-    var param = JSON.parse(window.localStorage.getItem('param'));
-    var param_p = document.getElementById('param_p');
-
-    param_p.innerHTML += '<p> Temp: ' + param.temp + '</p>' +
-        '<p> Time Signature: ' + param.timsig_n + '<span> &#47;</span> ' + param.timsig_d + '</p>' +
-        '<p> Number of Bars: ' + param.numOfBars + '</p>' +
-        '<p> Valence: ' + param.valence + '</p>' +
-        '<p> Density: ' + param.density + '</p>' +
-        '<p> Model: ' + param.model + '</p>'
-}
-
 
 //---------------------------------------------------------------------------------------------------------------
 // Play Button 
@@ -287,34 +267,21 @@ function fetch_param() {
 //---------------------------------------------------------------------------------------------------------------
 
 async function play_file() {
+
+    document.getElementById('play').className = "play-btn-press"
+    document.getElementById('pause-left').style.display = "inline-block"
+    document.getElementById('pause-right').style.display = "inline-block"
     //Add a span class for the spinner object
     //document.getElementById('play').innerHTML += "<span id ='playSpinner' class='spinner-border spinner-border-sm'   role='status' aria-hidden='true'  ></span>"
 
     //Fetch musicJSON
     var response = await fetch('/api');
     var data = await response.json();
-    // var instrument_names = []
-
-    //  Checking the orignal instrument names
-    // data.tracks.forEach((track) => {
-    //     instrument_names.push(track.name)
-    // })
-    // console.log(instrument_names)
-
 
     //  Change the instruments from bass-electric/bassoon/cello/clarinet/contrabass/flute/french-horn/guitar-acoustic
     //guitar-electric/guitar-nylon/harmonium/harp/organ/piano/saxophone/trombone/trumpet/tuba/violin/xylophone/
     // data.tracks[0].name = "bass-electric"
     // data.tracks[1].name = "harp"
-
-    //  Checking the New instrument names
-    // data.tracks.forEach((track) => {
-    //     instrument_names.push(track.name)
-    // })
-    // console.log(instrument_names)
-
-    //  var param_p = document.getElementById('param_p');
-    //  param_p.innerHTML = '<p>' + 'playing file...' + '</p>'
 
     // Play musicJSON with tone
     var instruments = [];
@@ -346,13 +313,14 @@ async function play_file() {
         while (instruments.length) {
             const instrument = instruments.shift();
             instrument.disconnect();
+
         }
     }
 
-    // Remove the spinner object as the function ends
-    // var spinner = document.getElementById('playSpinner')
-    // spinner.remove()
 
+    document.getElementById('play').className = "play-btn"
+    document.getElementById('pause-left').style.display = "none"
+    document.getElementById('pause-right').style.display = "none"
 
 }
 
@@ -366,18 +334,18 @@ var btn = document.getElementById("info-btn");
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block";
+btn.onclick = function () {
+    modal.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
+span.onclick = function () {
+    modal.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 }
