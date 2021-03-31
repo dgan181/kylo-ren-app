@@ -243,8 +243,10 @@ function display_sheet_music() {
         backend: "svg",
         drawTitle: false,
         drawComposer: false,
-        drawPartNames: true,
-        renderSingleHorizontalStaffline: false
+        drawPartNames: false,
+        renderSingleHorizontalStaffline: false,
+//        stretchLastSystemLine: false,
+//        autoResize: false
     });
 
     osmd
