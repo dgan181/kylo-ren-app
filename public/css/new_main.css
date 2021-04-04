@@ -148,7 +148,7 @@ select {
     background-color: #8abcd3;
     border: 1px solid #707070;
     padding: 0.5em;
-    border-radius:1em;
+    border-radius:0.5em;
     font-size: 1.1rem;
     appearance: none;
     cursor: pointer;
