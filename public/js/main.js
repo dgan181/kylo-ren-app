@@ -165,7 +165,7 @@ sequencer.on('change', ({column, row, state})=> {
 // Sends post request to server: model parameters
 //---------------------------------------------------------------------------------------------------------------
 
-var isClicked = true;
+var isClicked = false;
 function highlight() {
     var lstm = document.getElementById('lstm');
     var transformer = document.getElementById('transformer');
@@ -182,6 +182,17 @@ function highlight() {
 
 }
 
+document.getElementById("custom-slider").addEventListener("input", function(event){
+    let value = event.target.value;
+    document.getElementById("current-value").innerText= value;
+    document.getElementById("current-value").classList.add("active") 
+    document.getElementById("current-value").style.left = `${((value-0.7)/0.6 * 80) - 17*(value-0.7)}%`;
+  })
+  
+  document.getElementById("custom-slider").addEventListener("blur", function(event){
+    document.getElementById("current-value").classList.remove("active") 
+  })
+
 async function save_param() {
 
     //Add a span class for the spinner object
@@ -191,7 +202,7 @@ async function save_param() {
         "<div class='pulse-bubble pulse-bubble-2'></div>" +
         "<div class='pulse-bubble pulse-bubble-3'></div>"
 
-    var temp = document.getElementById('temp').value;
+    var temp = document.getElementById('custom-slider').value;
     var timsig_n = document.getElementById('time-sig-num').value;
     var timsig_d = document.getElementById('time-sig-den').value;
     var numOfBars = document.getElementById('numOfBars').value;
@@ -220,13 +231,14 @@ async function save_param() {
     var response = await fetch('/api', options);
     var data = await response.json();
     console.log(data.message)
-
-
+    var osmd = document.getElementById('osmdContainer');
+    osmd.innerHTML = " "
     document.getElementById('generate').className = "gen-btn"
     document.getElementById('generate').innerHTML = "Generate"
     if (data.code) {
         var osmd = document.getElementById('osmdContainer');
-        osmd.innerHTML = '<h3> Something has gone wrong somewhere </h3>'
+        osmd.innerHTML = '<h3>  Something has gone horribly wrong somewhere </h3>'  +
+                            '<h3><span> \\(o ~ 0)/ </span></h3>' 
     }
     else {
         display_sheet_music()
