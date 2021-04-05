@@ -4,7 +4,8 @@
   "description": "This is for the backend for ML model",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile:sass": "node-sass public/css/dark_mode.scss public/css/style.css"
   },
   "keywords": [
     "backend",
@@ -18,5 +19,8 @@
     "express": "^4.17.1",
     "opensheetmusicdisplay": "^0.9.4",
     "tone": "^14.7.77"
+  },
+  "devDependencies": {
+    "node-sass": "^5.0.0"
   }
 }
