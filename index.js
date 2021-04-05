@@ -104,16 +104,4 @@ app.get('/sheet', (request,response) => {
   response.send(xmlData)
 });
 
-//---------------------------------------------------------------------------------------------------------------
-// Get Request:
-//
-// Sends musicXML to client for sheet music
-//---------------------------------------------------------------------------------------------------------------
 
-
-app.get('/sheet', (request,response) => {
-  console.log("Sending sheet music")
-  response.set('Content-Type', 'text/xml');
-  const xmlData = fs.readFileSync(__model_dirname+"/musicxml/sheet.xml")
-  response.send(xmlData)
-});
