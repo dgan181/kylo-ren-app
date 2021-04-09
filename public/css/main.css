@@ -259,6 +259,7 @@ textarea {
   }
   h2,
   h3 {
+    font-family: Century Gothic,sans-serif;
     text-align: center;
     page-break-after: avoid;
   }
