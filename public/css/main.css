@@ -265,7 +265,7 @@ textarea {
 }
 .input-param{
   border: 1px solid #ddd;
-  box-shadow: 1px 1px 3px 1px #eee;
+
   padding: 20px 10px;
   margin:10px;
   border-radius: 5px;
@@ -404,7 +404,7 @@ button {
 .writtendocs{
 
   border: 1px solid #ddd;
-  box-shadow: 1px 1px 3px 1px #eee;
+
   padding: 20px 10px;
   margin:10px;
   border-radius: 5px;
@@ -427,4 +427,4 @@ button {
 
 html, body, input, textarea, select, button {
   color: rgba(255, 255, 255, 0.87) !important;
-  background-color: #1F1B24 !important; }
+  background-color: #121212 !important; }
