@@ -269,7 +269,7 @@ async function play_file(){
     drawTitle: false,
     drawComposer: false,
     drawPartNames: false,
-    renderSingleHorizontalStaffline: true
+    renderSingleHorizontalStaffline: false
     });
 
   osmd
