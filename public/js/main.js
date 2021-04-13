@@ -252,17 +252,20 @@ function display_sheet_music() {
     var osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmdContainer");
 
     osmd.setOptions({
-        backend: "svg",
         drawTitle: false,
         drawComposer: false,
-        drawPartNames: true,
-        renderSingleHorizontalStaffline: false
+        drawPartNames: false,
+        drawingParameters: "compact",
+
     });
 
     osmd
         .load("http://localhost:3000/sheet")
         .then(
             function () {
+                osmd.sheet.instruments[0].Visible = true;
+                osmd.sheet.instruments[1].Visible = false;
+                osmd.updateGraphic();
                 window.osmd = osmd; //give access to osmd object in Browser console, e.g. for osmd.setOptions()
                 osmd.render();
             });

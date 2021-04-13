@@ -17,6 +17,7 @@
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "opensheetmusicdisplay": "^0.9.4",
-    "tone": "^14.7.77"
+    "tone": "^14.7.77",
+    "xml2js": "^0.4.23"
   }
 }
