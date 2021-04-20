@@ -291,7 +291,7 @@ textarea {
 }
 
 .custom-input-2 input {
-  border: solid;
+
   -webkit-appearance: none;
   -ms-appearance: none;
   appearance: none;
@@ -306,7 +306,7 @@ textarea {
 }
 
 .custom-input input {
-  border: solid;
+
   -webkit-appearance: none;
   -ms-appearance: none;
   appearance: none;
@@ -342,7 +342,7 @@ html {
 }
 
 .custom-selector {
-  border: solid;
+
   position: relative;
   display: inline-block;
   font-size: 17px;
