@@ -14,7 +14,7 @@
 
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
-
+    <link rel="stylesheet" href="css/style.css">
     <!-- ===== BOX ICONS ===== -->
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
     <!-- Font Awesome -->
@@ -58,6 +58,12 @@
         bodypd = document.getElementById(bodyId),
         headerpd = document.getElementById(headerId)
 
+        console.log(toggle)
+        console.log(nav)
+        console.log(bodypd)
+        console.log(headerpd)
+
+
         // Validate that all variables exist
         if(toggle && nav && bodypd && headerpd){
             toggle.addEventListener('click', ()=>{
@@ -69,6 +75,11 @@
                 bodypd.classList.toggle('body-pd')
                 // add padding to header
                 headerpd.classList.toggle('body-pd')
+                console.log('inside the if block')
+                console.log(toggle)
+                console.log(nav)
+                console.log(bodypd)
+                console.log(headerpd)
             })
         }
     }
@@ -91,45 +102,45 @@
 
 <!--head done-->
 
-<body>
+<body id="body-pd">
 
-  <style>
-  .control-panel {
-    border : 1px solid #ddd;
-    box-shadow : 1px 1px 1px 1px #eee;
-  }
+<style>
+.control-panel {
+border : 1px solid #ddd;
+box-shadow : 1px 1px 1px 1px #eee;
+}
 
-  form {
-    width: 300px;
+form {
+width: 300px;
 
-  }
-  h2 {
-    text-align: center;
-    letter-spacing: 0.05em;
+}
+h2 {
+text-align: center;
+letter-spacing: 0.05em;
 
-  }
-  *, *::after, *::before {
-    box-sizing: border-box;
-  }
+}
+*, *::after, *::before {
+box-sizing: border-box;
+}
 
 <!--  .column {-->
 <!--  float: left;-->
 <!--  width: 50%;-->
 <!--  }-->
 
-  .row:after {
-  content: "";
-  display: table;
-  clear: both;
-  }
+.row:after {
+content: "";
+display: table;
+clear: both;
+}
 
-  .btn{
-  background-color: #F79996;
-  }
+.btn{
+background-color: #F79996;
+}
 
 
 
-  </style>
+</style>
 
   <!-- Add your site or application content here -->
 
@@ -148,14 +159,10 @@
                 <div>
                     <a href="#" class="nav__logo">
                         <i class='bx bx-layer nav__logo-icon'></i>
-                        <span class="nav__logo-name">Bedimcode</span>
+                        <span class="nav__logo-name">Sen2Seq</span>
                     </a>
 
                     <div class="nav__list">
-                        <a href="#" class="nav__link active">
-                        <i class='bx bx-grid-alt nav__icon' ></i>
-                            <span class="nav__name">Dashboard</span>
-                        </a>
 
                         <a href="#" class="nav__link">
                             <i class='bx bx-user nav__icon' ></i>
@@ -172,12 +179,13 @@
                             <span class="nav__name">Thank you!</span>
                         </a>
 
-                        <a href="#" class="nav__link">
-                            <i class='bx bx-bar-chart-alt-2 nav__icon' ></i>
-                            <span class="nav__name">Analytics</span>
-                        </a>
                     </div>
                 </div>
+
+                <a href="#" class="nav__link">
+                    <i class='bx bx-log-out nav__icon' ></i>
+                    <span class="nav__name">Log Out</span>
+                </a>
 
             </nav>
         </div>
@@ -309,7 +317,6 @@
   <script type="module"
     src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js">
   </script>
-
 
 
 
