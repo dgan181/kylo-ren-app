@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "compile:sass": "node-sass public/css/dark_mode.scss public/css/style.css"
+    "compile:sass": "node-sass public/css/navbar.scss public/css/style.css"
   },
   "keywords": [
     "backend",
