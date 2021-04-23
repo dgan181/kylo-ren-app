@@ -58,10 +58,11 @@
         bodypd = document.getElementById(bodyId),
         headerpd = document.getElementById(headerId)
 
-        console.log(toggle)
-        console.log(nav)
-        console.log(bodypd)
-        console.log(headerpd)
+//        console.log(toggle)
+//        console.log(nav)
+//        console.log(bodypd)
+//        console.log(headerpd)
+        console.log('function clicked')
 
 
         // Validate that all variables exist
@@ -75,16 +76,11 @@
                 bodypd.classList.toggle('body-pd')
                 // add padding to header
                 headerpd.classList.toggle('body-pd')
-                console.log('inside the if block')
-                console.log(toggle)
-                console.log(nav)
-                console.log(bodypd)
-                console.log(headerpd)
+                console.log('Function in the if block')
             })
         }
     }
 
-    showNavbar('header-toggle','nav-bar','body-pd','header')
 
     /*===== LINK ACTIVE  =====*/
     const linkColor = document.querySelectorAll('.nav__link')
@@ -146,11 +142,11 @@ background-color: #F79996;
 
       <header class="header" id="header">
             <div class="header__toggle">
-                <i class='bx bx-menu' id="header-toggle"></i>
+                <i class='bx bx-menu' onclick="showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')" id="header-toggle"></i>
             </div>
 
             <div class="header__img">
-                <img src="public/img/sutd.png" alt="">
+                <img src="img/sutd.png" alt="">
             </div>
       </header>
 
