@@ -3,11 +3,11 @@
 
 # TEAM
 
-    <name> -- <role> -- <twitter>
-
+    <name> Anirudh Srinivas <role> Senior Dev
+    <name> Divyanshu Gupta <role> Senior Dev
 # THANKS
 
-    <name>
+    <name> SUTD Lab
 
 # TECHNOLOGY COLOPHON
 

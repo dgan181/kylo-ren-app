@@ -58,15 +58,10 @@
         bodypd = document.getElementById(bodyId),
         headerpd = document.getElementById(headerId)
 
-//        console.log(toggle)
-//        console.log(nav)
-//        console.log(bodypd)
-//        console.log(headerpd)
         console.log('function clicked')
 
-
         // Validate that all variables exist
-        if(toggle && nav && bodypd && headerpd){
+        if(true){
             toggle.addEventListener('click', ()=>{
                 // show navbar
                 nav.classList.toggle('show')
@@ -76,9 +71,11 @@
                 bodypd.classList.toggle('body-pd')
                 // add padding to header
                 headerpd.classList.toggle('body-pd')
-                console.log('Function in the if block')
+
             })
         }
+
+        console.log('function ends')
     }
 
 
