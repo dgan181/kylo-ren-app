@@ -87,6 +87,7 @@ li .post-meta-description {
 @media screen and (min-width: 768px){
     :root{
         --big-font-size: 10.5rem;
+        --newbig-font-size: 5rem;
         --h2-font-size: 2rem;
         --normal-font-size: 1rem;
         --small-font-size: .875rem;
@@ -248,7 +249,7 @@ img{
 }
 .home__title{
     align-self: flex-end;
-    font-size: var(--big-font-size);
+    font-size: var(--newbig-font-size);
     color: var(--white-color);
     line-height: .8;
 }
