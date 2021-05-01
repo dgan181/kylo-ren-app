@@ -299,7 +299,7 @@ img{
 .about__text{
     margin-bottom: var(--mb-4);
 }
-.about__profession{
+.about__app{
     display: block;
     margin-bottom: var(--mb-4);
 }
