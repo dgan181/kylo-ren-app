@@ -109,8 +109,8 @@ background-color: #F79996;
             <ul class="nav__list">
                 <li class="nav__item"><a href="#home" class="nav__link active">Home</a></li>
                 <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
-                <li class="nav__item"><a href="#generate" class="nav__link">Generate</a></li>
-                <li class="nav__item"><a href="#portfolio" class="nav__link">Portfolio</a></li>
+                <li class="nav__item"><a href="#generates" class="nav__link">Generate</a></li>
+                <li class="nav__item"><a href="#download" class="nav__link">Download</a></li>
                 <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
             </ul>
         </div>
@@ -122,6 +122,7 @@ background-color: #F79996;
 </header>
 
 <main class="l-main">
+
     <!--===== HOME =====-->
     <section class="home" id="home">
         <div class="home__container bd-grid">
@@ -158,149 +159,104 @@ background-color: #F79996;
     </section>
 
     <!--===== GENERATE =====-->
-    <section class="skills section" id="generate">
+    <section class="skills section" id="generates">
         <h2 class="section-title">Generate</h2>
 
-      <!--  Center Form-->
-    <div class="row">
+          <!--  Center Form-->
+        <div class="row">
+        <div class="col" align="center">
+          <!--      Header    -->
+          <h2 style="text-align: center"> Choose Your Numbers </h2>
 
-    <div class="col" align="center">
+            <!--      Input Div -->
 
-      <!--      Header    -->
-      <h2 style="text-align: center"> Choose Your Numbers </h2>
+            <!--      Left form-->
+          <div class="input-param" align="center">
+            <form id="input-param-form1" >
+              <!--   Div 1  -->
+              <label class="custom-input">
+                Temperature
+                <input id="temp" type="text" onkeypress="return isNumberKey(this, event);" placeholder=" Value less than 1 is desriable"/>
+              </label>
 
+              <!--   Div 2    -->
+              <label class="custom-input-2">
+                Time Signature <br>
+                <input id="time-sig-num" type="number" min="1" value="4"> <span> &#47;</span> <input id="time-sig-den" type="number" min="1" name="value" value="4">
+              </label>
 
+              <!--     Div 3    -->
+              <label class="custom-input">
+                Number of Bars
+                <input id="numOfBars" type="number" min="8" max="40" value="16"/>
+              </label>
+            </form>
 
-      <!--      Input Div -->
+                <!--   right form  -->
+            <form id="input-param-form" >
+              <!--     Div 4    -->
+              <label class="custom-selector">
+                Valence
+                <select id="valence">
+                  <option value="-2">-2</option>
+                  <option value="-1">-1</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2" selected>2</option>
+                </select>
+              </label>
 
-    <!--      Left form-->
-      <div class="input-param" align="center">
-                <form id="input-param-form1" >
+              <!--     Div 5    -->
+              <label class="custom-selector">
+                Density
+                <select id="density">
+                  <option value="low">Low</option>
+                  <option value="med">Medium</option>
+                  <option value="high" selected>High</option>
+                </select>
+              </label>
 
-          <!--   Div 1  -->
-          <label class="custom-input">
-            Temperature
-            <input id="temp" type="text" onkeypress="return isNumberKey(this, event);" placeholder=" Value less than 1 is desriable"/>
-          </label>
+              <!--     Div 6    -->
+              <label class="custom-selector">
+                Model
+                <select id="model">
+                  <option value="lstm">LSTM</option>
+                  <option value="transformer" selected>Transformer</option>
+                </select>
+              </label>
 
-          <!--   Div 2    -->
-          <label class="custom-input-2">
-            Time Signature <br>
-            <input id="time-sig-num" type="number" min="1" value="4"> <span> &#47;</span> <input id="time-sig-den" type="number" min="1" name="value" value="4">
-          </label>
+            </form>
+          </div>
 
-          <!--     Div 3    -->
-          <label class="custom-input">
-            Number of Bars
-            <input id="numOfBars" type="number" min="8" max="40" value="16"/>
-          </label>
+            <!--      ADD THE GENERATE AND PLAY BTNS    -->
+          <div class="center-param">
+            <button onclick="save_param()" id="generate" class="btn"> Generate </button>
+            <button onclick="play_file()" id="play" class="btn"> Play </button>
+          </div>
 
-        </form>
+        </div>
 
-
-
-    <!--        right form-->
-        <form id="input-param-form" >
-          <!--     Div 4    -->
-          <label class="custom-selector">
-            Valence
-            <select id="valence">
-              <option value="-2">-2</option>
-              <option value="-1">-1</option>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2" selected>2</option>
-            </select>
-          </label>
-
-          <!--     Div 5    -->
-          <label class="custom-selector">
-            Density
-            <select id="density">
-              <option value="low">Low</option>
-              <option value="med">Medium</option>
-              <option value="high" selected>High</option>
-            </select>
-          </label>
-
-          <!--     Div 6    -->
-          <label class="custom-selector">
-            Model
-            <select id="model">
-              <option value="lstm">LSTM</option>
-              <option value="transformer" selected>Transformer</option>
-            </select>
-          </label>
-
-        </form>
-      </div>
-
-      <!--      ADD THE GENERATE AND PLAY BTNS    -->
-      <div class="center-param">
-      <button onclick="save_param()" id="generate" class="btn"> Generate </button>
-      <button onclick="play_file()" id="play" class="btn"> Play </button>
-      </div>
-    </div>
-
-
-  <!--      OSMD CONTAINER    -->
-  <div class="row">
-    <div id="param_p"></div>
-    <h2 style="text-align: center"> Kylo Ren </h2>
-    <div id="osmdContainer" class="osmd"/>
-    <script src="https://unpkg.com/opensheetmusicdisplay@0.8.3/build/opensheetmusicdisplay.min.js"> </script>
-  </div>
-
+            <!--      OSMD CONTAINER    -->
+          <div class="row">
+            <div id="param_p"></div>
+            <h2 style="text-align: center"> Sheet Music </h2>
+            <div id="osmdContainer" class="osmd"/>
+            <script src="https://unpkg.com/opensheetmusicdisplay@0.8.3/build/opensheetmusicdisplay.min.js"> </script>
+          </div>
+          </div>
     </section>
 
-    <!--===== PORTFOLIO =====-->
-    <section class="portfolio section" id="portfolio">
-        <h2 class="section-title">Portfolio</h2>
+    <!--===== DOWNLOAD SECTION  =====-->
+    <section class="portfolio section" id="download">
+        <h2 class="section-title">Download option</h2>
 
-        <div class="portfolio__container bd-grid">
-            <div class="portfolio__img">
-                <img src="assets/img/work1.jpg" alt="">
-
-                <div class="portfolio__link">
-                    <a href="#" class="portfolio__link-name">View details</a>
-                </div>
-            </div>
-            <div class="portfolio__img">
-                <img src="assets/img/work2.jpg" alt="">
-
-                <div class="portfolio__link">
-                    <a href="#" class="portfolio__link-name">View details</a>
-                </div>
-            </div>
-            <div class="portfolio__img">
-                <img src="assets/img/work3.jpg" alt="">
-
-                <div class="portfolio__link">
-                    <a href="#" class="portfolio__link-name">View details</a>
-                </div>
-            </div>
-            <div class="portfolio__img">
-                <img src="assets/img/work4.jpg" alt="">
-
-                <div class="portfolio__link">
-                    <a href="#" class="portfolio__link-name">View details</a>
-                </div>
-            </div>
-            <div class="portfolio__img">
-                <img src="assets/img/work5.jpg" alt="">
-
-                <div class="portfolio__link">
-                    <a href="#" class="portfolio__link-name">View details</a>
-                </div>
-            </div>
-            <div class="portfolio__img">
-                <img src="assets/img/work6.jpg" alt="">
-
-                <div class="portfolio__link">
-                    <a href="#" class="portfolio__link-name">View details</a>
-                </div>
-            </div>
+        <div class="col" align="center">
+        <div class="center-param">
+            <button onclick="" id="MIDI" class="btn"> MIDI </button>
+            <button onclick="" id="XML" class="btn"> XML </button>
+          </div>
         </div>
+
     </section>
 
     <!--===== CONTACT =====-->
@@ -331,6 +287,7 @@ background-color: #F79996;
             </form>
         </div>
     </section>
+
 </main>
 
 <!--===== FOOTER =====-->
