@@ -252,8 +252,8 @@ async function play_file(){
 
   //  Change the instruments from bass-electric/bassoon/cello/clarinet/contrabass/flute/french-horn/guitar-acoustic
   //guitar-electric/guitar-nylon/harmonium/harp/organ/piano/saxophone/trombone/trumpet/tuba/violin/xylophone/
-  data.tracks[0].name = "bass-electric"
-  data.tracks[1].name = "cello"
+  data.tracks[0].name = "flute"
+  data.tracks[1].name = "piano"
 
   //  Checking the New instrument names
   data.tracks.forEach((track) => {
