@@ -3,7 +3,7 @@
 ### To run server in development mode:
 
 ``` 
-$ npm index.js
+$ node index.js
 ```
 
 View webpage in browser at ```http//localhost:3000```
