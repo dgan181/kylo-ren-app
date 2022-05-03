@@ -2,15 +2,25 @@
 
 ### To run server in development mode:
 
-``` 
-$ npm index.js
-```
+* Run all commands from kylo-ren-app directory.
 
-View webpage in browser at ```http//localhost:3000```
+
+Step 1: Run the express server
+
+```commandline
+node index.js
+```
+Step 2: Serve the instruments
+
+```commandline
+npm start
+```
+-------
+
+##View webpage in browser at 
+
+```http//localhost:3000``` 
 
 also to serve the instruments, from the app directory run:
 
-``` 
-$ http-server ./public/js/tonejs-instruments/samples -p 8080 --cors
-```
 
