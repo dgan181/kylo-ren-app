@@ -1,4 +1,7 @@
-# kylo-ren-app
+# Lead Sheet Generation using Transformers and LSTMs
+
+Design and User Interface study based on paper written by Dr. Dorein, Dimos and Kat Agres. This is the kylo-ren-app 
+which is built as a user interface for an Automatic Music Generation Model.
 
 ### To run server in development mode:
 
@@ -17,7 +20,7 @@ npm start
 ```
 -------
 
-##View webpage in browser at 
+## View webpage in browser at 
 
 ```http//localhost:3000``` 
 
